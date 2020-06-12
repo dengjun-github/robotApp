@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.MessageTabPageController">
+    <children>
+        <TabPane layoutX="235.0" layoutY="170.0" prefHeight="982.0" prefWidth="1265.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="38.0" tabMaxWidth="250.0" tabMinHeight="38.0" tabMinWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="消息设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="238.0" prefWidth="413.0">
+                                    <children>
+                                        <GridPane layoutY="61.0" prefHeight="327.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="231.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="110.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="封盘停止攻击图片">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" text="开始攻击图片2" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" text="开始攻击图片" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </CheckBox>
+                                                <Button mnemonicParsing="false" text="点击更换" GridPane.columnIndex="1">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击更换" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击更换" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击更换" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" text="倒计时图片">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextField prefHeight="32.0" prefWidth="57.0" text="300">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="30.0" />
+                                                            </HBox.margin>
+                                                        </TextField>
+                                                        <Label text="秒">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" text="开奖提前：">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextField prefHeight="32.0" prefWidth="54.0">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <Label text="秒封盘">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false" text="点击查看" GridPane.columnIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击查看" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击查看" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="点击查看" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="14.0" layoutY="440.0" prefHeight="163.0" prefWidth="430.0">
+                                    <children>
+                                        <HBox layoutY="1.0" prefHeight="20.0" prefWidth="431.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="玩法说明消息">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="100.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <TextArea layoutX="-1.0" layoutY="21.0" prefHeight="90.0" prefWidth="435.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="15.0" layoutY="275.0" prefHeight="120.0" prefWidth="433.0">
+                                    <children>
+                                        <HBox layoutY="1.0" prefHeight="20.0" prefWidth="431.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="开始攻击文字">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="100.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <TextArea layoutX="-2.0" layoutY="23.0" prefHeight="90.0" prefWidth="435.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="14.0" layoutY="603.0" prefHeight="163.0" prefWidth="430.0">
+                                    <children>
+                                        <HBox layoutY="1.0" prefHeight="20.0" prefWidth="431.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="开奖消息_文字">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="100.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <TextArea layoutX="-1.0" layoutY="21.0" prefHeight="90.0" prefWidth="435.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="14.0" layoutY="766.0" prefHeight="101.0" prefWidth="434.0">
+                                    <children>
+                                        <HBox layoutY="1.0" prefHeight="20.0" prefWidth="431.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="开奖历史_文字">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="100.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" text="倒叙模式">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="100.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <TextArea layoutX="-1.0" layoutY="21.0" prefHeight="90.0" prefWidth="435.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="475.0" layoutY="295.0" prefHeight="468.0" prefWidth="778.0">
+                                    <children>
+                                        <GridPane layoutX="26.0" layoutY="110.0" prefHeight="468.0" prefWidth="778.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="下注成功提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="封盘下注提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="下注成功提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="下注成功提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="下注成功提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" text="下注成功提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" text="下注取消提示" wrapText="true">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="10.0" />
+                                                            </HBox.margin>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="78.0" prefWidth="297.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="458.0" layoutY="14.0" prefHeight="255.0" prefWidth="785.0" style="-fx-border-color: #DCDCDC; -fx-border-style: sliod;">
+                                    <children>
+                                        <Label layoutX="14.0" layoutY="4.0" text="其他消息设置">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox layoutX="627.0" layoutY="64.0" prefHeight="31.0" prefWidth="150.0" promptText="请选择" />
+                                        <CheckBox layoutX="627.0" layoutY="39.0" mnemonicParsing="false" text="开奖结果图">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </CheckBox>
+                                        <CheckBox layoutX="627.0" layoutY="109.0" mnemonicParsing="false" text="开奖历史图">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </CheckBox>
+                                        <ComboBox layoutX="627.0" layoutY="134.0" prefHeight="31.0" prefWidth="150.0" promptText="请选择" />
+                                        <ComboBox layoutX="627.0" layoutY="177.0" prefHeight="31.0" prefWidth="150.0" promptText="发送20条开奖历史" />
+                                        <Button layoutX="627.0" layoutY="216.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" text="下一页" />
+                                        <AnchorPane layoutX="6.0" layoutY="32.0" prefHeight="217.0" prefWidth="597.0">
+                                            <children>
+                                                <VBox prefHeight="211.0" prefWidth="280.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="280.0">
+                                                            <children>
+                                                                <TextField prefHeight="28.0" prefWidth="70.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text=" 秒 发送文本消息1">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </CheckBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <TextArea prefHeight="159.0" prefWidth="280.0" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox layoutX="317.0" layoutY="3.0" prefHeight="211.0" prefWidth="280.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="280.0">
+                                                            <children>
+                                                                <TextField prefHeight="28.0" prefWidth="70.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text=" 秒 发送文本消息2">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </CheckBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <TextArea prefHeight="159.0" prefWidth="280.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane layoutX="6.0" layoutY="32.0" prefHeight="217.0" prefWidth="597.0" visible="false">
+                                            <children>
+                                                <VBox prefHeight="211.0" prefWidth="280.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="280.0">
+                                                            <children>
+                                                                <TextField prefHeight="28.0" prefWidth="70.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text=" 秒 发送文本消息3">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </CheckBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <TextArea prefHeight="159.0" prefWidth="280.0" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox layoutX="317.0" layoutY="3.0" prefHeight="211.0" prefWidth="280.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="280.0">
+                                                            <children>
+                                                                <TextField prefHeight="28.0" prefWidth="70.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text=" 秒 发送文本消息4">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </CheckBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <TextArea prefHeight="159.0" prefWidth="280.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                                <HBox alignment="CENTER" layoutX="574.0" layoutY="763.0" prefHeight="55.0" prefWidth="411.0">
+                                    <children>
+                                        <Label text="消息内容大于">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField alignment="CENTER" prefHeight="29.0" prefWidth="88.0" text="20">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="20.0" />
+                                            </HBox.margin>
+                                        </TextField>
+                                        <Label text="字时,自动分段">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" layoutX="574.0" layoutY="818.0" prefHeight="55.0" prefWidth="429.0">
+                                    <children>
+                                        <CheckBox mnemonicParsing="false" text="开启私聊下注">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </CheckBox>
+                                        <CheckBox mnemonicParsing="false" text="龙虎合字段EMOJI表情模式">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="50.0" />
+                                            </HBox.margin>
+                                        </CheckBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="账单设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane layoutX="3.0" layoutY="64.0" prefHeight="670.0" prefWidth="385.0" style="-fx-background-color: #BEBEBE;">
+                                    <children>
+                                        <VBox layoutX="59.0" layoutY="30.0" prefHeight="600.0" prefWidth="268.0" spacing="15.0">
+                                            <children>
+                                                <Label text="账单头部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0" text="萨达">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="账单中部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="账单尾部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="440.0" layoutY="64.0" prefHeight="670.0" prefWidth="385.0" style="-fx-background-color: #BEBEBE;">
+                                    <children>
+                                        <VBox layoutX="59.0" layoutY="30.0" prefHeight="600.0" prefWidth="268.0" spacing="15.0">
+                                            <children>
+                                                <Label text="核对头部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="核对中部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="核对尾部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane layoutX="878.0" layoutY="64.0" prefHeight="670.0" prefWidth="385.0" style="-fx-background-color: #BEBEBE;">
+                                    <children>
+                                        <VBox layoutX="59.0" layoutY="30.0" prefHeight="600.0" prefWidth="268.0" spacing="15.0">
+                                            <children>
+                                                <Label text="名单头部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="名单中部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                                <Label text="名单尾部：">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </TextArea>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <HBox alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="100.0" prefWidth="1270.0" spacing="225.0">
+                                    <children>
+                                        <ComboBox prefHeight="47.0" prefWidth="213.0" promptText="账单格式设置" />
+                                        <ComboBox prefHeight="47.0" prefWidth="213.0" promptText="攻击核对格式设置" />
+                                        <ComboBox prefHeight="47.0" prefWidth="213.0" promptText="中奖名单格式设置" />
+                                    </children>
+                                </HBox>
+                        <TabPane layoutX="-1.0" layoutY="743.0" prefHeight="196.0" prefWidth="1265.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="36.0" tabMinWidth="150.0">
+                          <tabs>
+                            <Tab text="账单显示设置">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="109.0" prefWidth="1002.0">
+                                             <children>
+                                                <CheckBox layoutX="8.0" layoutY="14.0" mnemonicParsing="false" text="格式化金额(不显示小数部分)">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <CheckBox layoutX="299.0" layoutY="14.0" mnemonicParsing="false" text="账单昵称截取两个字符">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <Label layoutX="8.0" layoutY="80.0" text="账单低于">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField layoutX="81.0" layoutY="74.0" prefHeight="23.0" prefWidth="71.0">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Label layoutX="159.0" layoutY="80.0" text="分不显示">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="299.0" layoutY="80.0" text="账单积分小于：">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField layoutX="404.0" layoutY="74.0" prefHeight="23.0" prefWidth="71.0">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Label layoutX="488.0" layoutY="80.0" text="位用0补位">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

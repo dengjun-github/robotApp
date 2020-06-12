@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1032.0" prefWidth="1257.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.IndexController">
+    <children>
+        <TabPane layoutX="74.0" layoutY="54.0" prefHeight="982.0" prefWidth="1326.0" tabClosingPolicy="UNAVAILABLE"
+                 tabMaxHeight="50.0" tabMaxWidth="138.0" tabMinHeight="50.0" tabMinWidth="126.0"
+                 AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="账单信息" fx:id="billTab">
+                    <fx:include fx:id="billTabPage" source="BillTabPage.fxml"/>
+                </Tab>
+                <Tab text="赔率设置" fx:id="oddTab">
+                    <fx:include fx:id="oddTabPage" source="OddTabPage.fxml"/>
+                </Tab>
+                <Tab text="反水管理" fx:id="backTab">
+                    <fx:include fx:id="backTabPage" source="BackTabPage.fxml"/>
+                </Tab>
+                <Tab text="流水管理" fx:id="statementTab">
+                    <fx:include fx:id="statementTabPage" source="StatementTabPage.fxml"/>
+                </Tab>
+                <Tab text="消息设置" fx:id="messageTab">
+                    <fx:include fx:id="messageTabPage" source="MessageTabPage.fxml"/>
+                </Tab>
+                <Tab text="假人管理" fx:id="dummyTab">
+                    <fx:include fx:id="dummyTabPage" source="DummyTabPage.fxml"/>
+                </Tab>
+                <Tab text="日志查询" fx:id="logTab">
+                    <fx:include fx:id="logTabPage" source="LogTabPage.fxml"/>
+                </Tab>
+            </tabs>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </TabPane>
+        <AnchorPane layoutY="982.0" prefHeight="49.0" prefWidth="1237.0"
+                    style="-fx-border-color: #DCDCDC; -fx-border-style: solid none none none;">
+            <children>
+                <HBox layoutX="93.0" prefHeight="49.0" prefWidth="1322.0" spacing="10.0" AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label text="玩家人数 ：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="总分数 ：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="今日盈亏：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="假人数量 ：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="假人分数 ：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="今日福利 ：">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="15.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

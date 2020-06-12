@@ -3,7 +3,7 @@ package com.dj.util;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.dj.pojo.response.Root;
+import com.dj.entity.pojo.response.Root;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

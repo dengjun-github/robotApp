@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.dj.controller.BackTabPageController"
+            minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<children>
+    <TabPane prefHeight="925.0" prefWidth="1257.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="35.0" tabMaxWidth="250.0" tabMinHeight="35.0" tabMinWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+            <Tab text="反水设置">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane layoutX="769.0" layoutY="127.0" prefHeight="853.0" prefWidth="495.0">
+                            <children>
+                                <TabPane layoutX="89.0" layoutY="180.0" prefHeight="853.0" prefWidth="495.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="40.0" tabMinWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="手动发放推手福利">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #DCDCDC; -fx-border-style: solid;">
+                                                    <children>
+                                                        <HBox alignment="CENTER" prefHeight="131.0" prefWidth="493.0">
+                                                            <children>
+                                                                <Label text="仅统计下注次数大于或等于">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField prefHeight="23.0" prefWidth="81.0" text="1">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="次的下线">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutY="131.0" prefHeight="100.0" prefWidth="495.0" spacing="60.0">
+                                                            <children>
+                                                                <RadioButton mnemonicParsing="false" text="按总下注金额发放福利">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </RadioButton>
+                                                                <RadioButton mnemonicParsing="false" text="按用户总亏损发放福利">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </RadioButton>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER_RIGHT" layoutX="2.0" layoutY="231.0" prefHeight="100.0" prefWidth="498.0">
+                                                            <children>
+                                                                <TextField prefHeight="32.0" prefWidth="81.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="&lt;=&gt;">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField prefHeight="32.0" prefWidth="81.0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="福利比例：">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                    <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                    </HBox.margin>
+                                                                </Label>
+                                                                <TextField prefHeight="32.0" prefWidth="61.0" text="100">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="\%">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="52.0" text="+1栏">
+                                                                    <HBox.margin>
+                                                                        <Insets left="40.0" />
+                                                                    </HBox.margin>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="2.0" layoutY="331.0" prefHeight="100.0" prefWidth="493.0">
+                                                            <children>
+                                                                <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="166.0" text="确认发放">
+                                                                    <font>
+                                                                        <Font size="20.0" />
+                                                                    </font>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="自动发放推手福利">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #DCDCDC; -fx-border-style: solid;">
+                                                    <children>
+                                                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="494.0" spacing="15.0">
+                                                            <children>
+                                                                <CheckBox mnemonicParsing="false" text="开启自动发放福利">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </CheckBox>
+                                                                <RadioButton mnemonicParsing="false" text="亏损">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                    <HBox.margin>
+                                                                        <Insets left="60.0" />
+                                                                    </HBox.margin>
+                                                                </RadioButton>
+                                                                <RadioButton mnemonicParsing="false" text="流水">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </RadioButton>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="1.0" layoutY="300.0" prefHeight="75.0" prefWidth="494.0" />
+                                                        <HBox alignment="CENTER_RIGHT" layoutY="225.0" prefHeight="74.0" prefWidth="498.0">
+                                                            <children>
+                                                                <TextField prefHeight="32.0" prefWidth="81.0" text="10000">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="&lt;=&gt;">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField prefHeight="32.0" prefWidth="81.0" text="99999">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="发放">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                    <padding>
+                                                                        <Insets left="20.0" />
+                                                                    </padding>
+                                                                </Label>
+                                                                <TextField prefHeight="32.0" prefWidth="81.0" text="100">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="\%">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="52.0" text="+1栏">
+                                                                    <HBox.margin>
+                                                                        <Insets left="40.0" />
+                                                                    </HBox.margin>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="1.0" layoutY="150.0" prefHeight="75.0" prefWidth="494.0">
+                                                            <children>
+                                                                <Label text="按照推手下线，每">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="49.0" text="30">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="天的流水来发放福利">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutY="75.0" prefHeight="75.0" prefWidth="494.0">
+                                                            <children>
+                                                                <Label text="仅统计下注次数大于或等于">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="54.0" text="0">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <Label text="次的用户">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="769.0" prefHeight="127.0" prefWidth="495.0">
+                            <children>
+                                <GridPane alignment="CENTER" layoutX="12.0" layoutY="33.0" prefHeight="127.0" prefWidth="495.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="推手人数：">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="100.0" text="9999" GridPane.columnIndex="1">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="总下线人数：" GridPane.rowIndex="1">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="100.0" text="9999" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="福利发放金额：" GridPane.rowIndex="2">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="100.0" text="9999" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                        <HBox alignment="CENTER" layoutX="29.0" layoutY="593.0" prefHeight="389.0" prefWidth="1014.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="222.0" AnchorPane.topAnchor="593.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="770.0">
+                            <children>
+                                <Label text="查询时间：">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <DatePicker promptText="请选择开始日期" />
+                                <Label text="&lt;=&gt;">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <DatePicker promptText="请选择结束日期">
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </DatePicker>
+                                <Button mnemonicParsing="false" text="查询">
+                                    <HBox.margin>
+                                        <Insets left="80.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <TableView fixedCellSize="0.0" layoutY="126.0" prefHeight="855.0" prefWidth="769.0">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="C1" />
+                                <TableColumn minWidth="20.0" prefWidth="75.0" text="C2" />
+                            </columns>
+                        </TableView>
+
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="福利设置">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <AnchorPane prefHeight="927.0" prefWidth="1265.0">
+                                <children>
+                                    <TabPane layoutX="115.0" layoutY="157.0" prefHeight="927.0" prefWidth="1265.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" tabMinWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <tabs>
+                                            <Tab text="首充福利设置">
+                                                <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <children>
+                                                            <CheckBox layoutX="36.0" layoutY="22.0" mnemonicParsing="false" text="开启首充福利">
+                                                                <font>
+                                                                    <Font size="20.0" />
+                                                                </font>
+                                                            </CheckBox>
+                                                            <AnchorPane layoutX="188.0" layoutY="50.0" prefHeight="260.0" prefWidth="725.0" style="-fx-background-color: #FFFAFA;">
+                                                                <children>
+                                                                    <HBox alignment="CENTER" layoutY="27.0" prefHeight="47.0" prefWidth="521.0" spacing="20.0">
+                                                                        <children>
+                                                                            <RadioButton mnemonicParsing="false" text="新人首充充值赠送">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </RadioButton>
+                                                                            <RadioButton mnemonicParsing="false" text="每月首充充值赠送">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </RadioButton>
+                                                                            <RadioButton mnemonicParsing="false" text="每天首充充值赠送">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </RadioButton>
+                                                                        </children>
+                                                                    </HBox>
+                                                                    <HBox alignment="CENTER" layoutY="83.0" prefHeight="177.0" prefWidth="651.0">
+                                                                        <children>
+                                                                            <CheckBox mnemonicParsing="false" text="如果没有到达设置的标准则不予许下分，且回复 ：">
+                                                                                <font>
+                                                                                    <Font size="18.0" />
+                                                                                </font>
+                                                                            </CheckBox>
+                                                                            <TextArea prefHeight="177.0" prefWidth="196.0" text="[IR:at=QQ] &#10;流水或期数未达到管理员设置的要求，如执意下分请联系本群管理员。" wrapText="true">
+                                                                                <font>
+                                                                                    <Font size="18.0" />
+                                                                                </font>
+                                                                            </TextArea>
+                                                                        </children>
+                                                                    </HBox>
+                                                                </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="3.0" layoutY="325.0" prefHeight="562.0" prefWidth="1225.0">
+                                                                <children>
+                                                                    <Label layoutX="14.0" layoutY="14.0" text="下分设置 ：">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <AnchorPane layoutX="45.0" layoutY="48.0" prefHeight="512.0" prefWidth="1180.0">
+                                                                        <children>
+                                                                            <HBox alignment="CENTER" layoutX="2.0" prefHeight="49.0" prefWidth="1110.0">
+                                                                                <children>
+                                                                                    <Label text="充值 ：">
+                                                                                        <font>
+                                                                                            <Font size="20.0" />
+                                                                                        </font>
+                                                                                    </Label>
+                                                                                    <TextField prefHeight="32.0" prefWidth="111.0" text="100000000">
+                                                                                        <font>
+                                                                                            <Font size="16.0" />
+                                                                                        </font>
+                                                                                    </TextField>
+                                                                                    <Label text="以上赠送充值金额的">
+                                                                                        <font>
+                                                                                            <Font size="20.0" />
+                                                                                        </font>
+                                                                                    </Label>
+                                                                                    <TextField prefHeight="32.0" prefWidth="57.0" text="100">
+                                                                                        <font>
+                                                                                            <Font size="16.0" />
+                                                                                        </font>
+                                                                                    </TextField>
+                                                                                    <Label text="\%,且流水达到充值金额的">
+                                                                                        <font>
+                                                                                            <Font size="20.0" />
+                                                                                        </font>
+                                                                                    </Label>
+                                                                                    <TextField prefHeight="32.0" prefWidth="43.0">
+                                                                                        <font>
+                                                                                            <Font size="16.0" />
+                                                                                        </font>
+                                                                                    </TextField>
+                                                                                    <Label text="倍，且下注期数达到">
+                                                                                        <font>
+                                                                                            <Font size="20.0" />
+                                                                                        </font>
+                                                                                    </Label>
+                                                                                    <TextField prefHeight="32.0" prefWidth="75.0" text="233">
+                                                                                        <font>
+                                                                                            <Font size="16.0" />
+                                                                                        </font>
+                                                                                    </TextField>
+                                                                                    <Label text="期可下分">
+                                                                                        <font>
+                                                                                            <Font size="20.0" />
+                                                                                        </font>
+                                                                                    </Label>
+                                                                                </children>
+                                                                            </HBox>
+                                                                            <Button layoutX="1119.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="61.0" text="+1栏">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </Button>
+                                                                        </children>
+                                                                    </AnchorPane>
+                                                                </children>
+                                                            </AnchorPane>
+                                                        </children>
+                                                    </AnchorPane>
+                                                </content>
+                                            </Tab>
+                                            <Tab text="节日福利设置">
+                                                <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <children>
+                                                            <HBox alignment="CENTER" layoutY="134.0" prefHeight="49.0" prefWidth="1110.0">
+                                                                <children>
+                                                                    <DatePicker prefHeight="30.0" prefWidth="163.0" />
+                                                                    <Label text="&lt;=&gt;">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <DatePicker prefHeight="30.0" prefWidth="163.0" />
+                                                                    <Label text="流水达到">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="111.0" text="100000000">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="以上，且下注期数达到">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="75.0" text="233">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="期以上送">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="108.0" text="233">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="分">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                </children>
+                                                            </HBox>
+                                                            <Button layoutX="1204.0" layoutY="131.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="61.0" text="+1栏">
+                                                                <font>
+                                                                    <Font size="16.0" />
+                                                                </font>
+                                                            </Button>
+                                                            <Button layoutX="497.0" layoutY="25.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="116.0" text="确认送出">
+                                                                <font>
+                                                                    <Font size="20.0" />
+                                                                </font>
+                                                            </Button>
+                                                        </children>
+                                                    </AnchorPane>
+                                                </content>
+                                            </Tab>
+                                            <Tab text="盈亏福利设置">
+                                                <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="886.0" prefWidth="1252.0">
+                                                        <children>
+                                                            <HBox alignment="CENTER" layoutY="99.0" prefHeight="127.0" prefWidth="1110.0">
+                                                                <children>
+                                                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                                                                        <children>
+                                                                            <RadioButton mnemonicParsing="false" text="赢钱">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </RadioButton>
+                                                                            <RadioButton mnemonicParsing="false" text="输钱">
+                                                                                <font>
+                                                                                    <Font size="16.0" />
+                                                                                </font>
+                                                                            </RadioButton>
+                                                                        </children>
+                                                                    </VBox>
+                                                                    <DatePicker prefHeight="30.0" prefWidth="163.0" promptText="请选择开始日期" />
+                                                                    <Label text="&lt;=&gt;">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <DatePicker prefHeight="30.0" prefWidth="163.0" promptText="请选择结束日期" />
+                                                                    <Label text="达到">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="111.0" text="100000000">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="以上，且下注期数达到">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="75.0" text="233">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="期以上送">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                    <TextField prefHeight="32.0" prefWidth="108.0" text="233">
+                                                                        <font>
+                                                                            <Font size="16.0" />
+                                                                        </font>
+                                                                    </TextField>
+                                                                    <Label text="分">
+                                                                        <font>
+                                                                            <Font size="20.0" />
+                                                                        </font>
+                                                                    </Label>
+                                                                </children>
+                                                            </HBox>
+                                                            <Button layoutX="497.0" layoutY="42.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="116.0" text="确认送出">
+                                                                <font>
+                                                                    <Font size="20.0" />
+                                                                </font>
+                                                            </Button>
+                                                            <Button layoutX="1182.0" layoutY="135.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="61.0" text="+1栏">
+                                                                <font>
+                                                                    <Font size="16.0" />
+                                                                </font>
+                                                            </Button>
+                                                        </children>
+                                                    </AnchorPane>
+                                                </content>
+                                            </Tab>
+                                        </tabs>
+                                    </TabPane>
+                                </children>
+                            </AnchorPane>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="福利查询">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="1257.0" spacing="15.0">
+                                <children>
+                                    <Label text="查询时间">
+                                        <font>
+                                            <Font size="18.0" />
+                                        </font>
+                                    </Label>
+                                    <DatePicker prefHeight="36.0" />
+                                    <Label text="&lt;=&gt;" />
+                                    <DatePicker prefHeight="36.0" />
+                                    <ComboBox prefHeight="32.0" prefWidth="150.0" promptText="快捷查询" />
+                                    <Button mnemonicParsing="false" prefHeight="36.0" text="查询" />
+                                </children>
+                            </HBox>
+                            <AnchorPane layoutX="5.0" layoutY="99.0" prefHeight="768.0" prefWidth="1248.0">
+                                <children>
+                                    <TableView layoutX="115.0" layoutY="128.0" prefHeight="768.0" prefWidth="1248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <columns>
+                                            <TableColumn prefWidth="250.0" text="玩家账号" />
+                                            <TableColumn prefWidth="199.0" text="昵称" />
+                                            <TableColumn prefWidth="272.0" text="福利类型" />
+                                            <TableColumn prefWidth="203.0" text="福利金额" />
+                                            <TableColumn prefWidth="323.0" text="时间" />
+                                        </columns>
+                                    </TableView>
+                                </children>
+                            </AnchorPane>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+</children>
+</AnchorPane>

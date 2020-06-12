@@ -1,42 +1,57 @@
 package com.dj;
 
 import com.dj.controller.BindController;
+import com.dj.controller.IndexController;
 import com.dj.controller.LoginController;
-import com.dj.controller.MainController;
 import com.dj.controller.RegisterController;
-import com.dj.net.WebClientVerticle;
+import com.dj.net.VertxWebClient;
 import com.dj.util.ExecutorPool;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.apache.commons.lang3.ThreadUtils;
+import javafx.stage.StageStyle;
+import net.mamoe.mirai.Bot;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.dj.util.AllFxmlPath.*;
+
 public class App extends Application {
+
+    public static final Map<String,Initializable> controllers = new HashMap<>();
+
+
     private Stage stage;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        stage.setTitle("UserLogin");
+        stage.setTitle("QQRobot");
+        stage.initStyle(StageStyle.UNIFIED);
         gotologin();
-        primaryStage.setResizable(false);
         stage.show();
     }
 
     @Override
     public void stop() throws Exception {
-        WebClientVerticle.vertx.close();
-        ExecutorPool.executorService.shutdownNow().stream().forEach(runnable->{
-            new Thread(runnable).stop();
+        VertxWebClient.vertx.close();
+        ExecutorPool.executorService.shutdownNow();
+        Bot.getBotInstances().forEach(bot ->{
+            bot.close(new Exception());
         });
+        Platform.exit();
     }
 
 
@@ -44,11 +59,14 @@ public class App extends Application {
         launch(args);
     }
 
-    //登录
+    //登录窗口
     public LoginController gotologin() {
         try {
-            LoginController login = (LoginController) replaceSceneContent("../../fxml/Login.fxml");
+            stage.setResizable(true);
+//            if (!stage.getStyle().equals(StageStyle.UNDECORATED)) stage.initStyle(StageStyle.UNDECORATED);
+            LoginController login = (LoginController) replaceSceneContent(LOGIN_PATH);
             login.setApp(this);
+            controllers.put("LoginController",login);
             return login;
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,31 +74,34 @@ public class App extends Application {
         }
     }
 
-    //注册
+    //注册窗口
     public void gotoRegister() {
         try {
-            RegisterController register = (RegisterController) replaceSceneContent("../../fxml/Register.fxml");
+            RegisterController register = (RegisterController) replaceSceneContent(REGISTER_PATH);
             register.setApp(this);
+            controllers.put("RegisterController",register);
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    //绑卡
+    //绑卡窗口
     public void gotoBind() {
         try {
-            BindController bind = (BindController) replaceSceneContent("../../fxml/Bind.fxml");
+            BindController bind = (BindController) replaceSceneContent(BIND_PATH);
             bind.setApp(this);
+            controllers.put("BindController",bind);
         } catch (Exception e) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     //主窗口
-    public void gotoMain() {
+    public void gotoIndex() {
         try {
-            MainController main = (MainController) replaceSceneContent("../../fxml/Main.fxml");
-
+            IndexController index = (IndexController) replaceSceneContent(INDEX_PATH);
+            index.setMainStage(this.stage);
+            controllers.put("IndexController",index);
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,10 +119,24 @@ public class App extends Application {
         } finally {
             in.close();
         }
+        page.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        page.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
         Scene scene = new Scene(page);
+
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setResizable(false);
+        stage.centerOnScreen();
+//        stage.setY(stage.getY() * 3f / 2f);
         return (Initializable) loader.getController();
     }
+
 
 }

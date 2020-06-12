@@ -1,14 +1,9 @@
 package com.dj.util;
 
 import com.dj.Exception.ClientErrorException;
-import com.dj.pojo.response.Root;
-import com.dj.util.gameUtils.GameUtil;
+import com.dj.entity.pojo.response.Root;
+import com.dj.entity.vo.ImageVo;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class GlobalConstant {
 
@@ -16,13 +11,63 @@ public class GlobalConstant {
     public static final Integer PORT = 8080;
 
     //服务器主机
-    public static final String HOST = "192.168.1.109";
+    public static final String HOST = "192.168.1.107";
 
     //用户token
     public static String USER_TOKEN = "";
 
     //用户配置
-    public static final Root USER_ROOT = new Root();
+    public static Root USER_ROOT = new Root();
+
+    //玩家玩的是哪个彩种
+    public static StringBuilder GAME_INDEX = new StringBuilder();
+    //
+    public static StringBuilder GAME_TYPE = new StringBuilder();
+
+    //是否可以下注
+    public static boolean CAN_BET = true;
+
+    public static boolean closeStatus = false;
+
+
+
+    //图片地址
+    public static String IMAGE_PATH = "D:\\bot\\";
+
+    //是否开启游戏
+    public static boolean IS_GAME_BEGIN = false;
+
+    //是否已经开奖
+    public static boolean IS_OPEN = false;
+
+    //图片
+    public static final ImageVo imageVo = new ImageVo();
+
+    public enum Action{
+        UPPER_SCORE("UpperScoreInstruct"),
+        LOWER_SCORE("LowerScoreInstruct"),
+        QUERY_SCORE("QueryScoreInstruct"),
+        BETS_DA("BetsDa"),
+        BETS_XIAO("BetsXiao"),
+        BETS_DAN("BetsDan"),
+        BETS_SHUANG("BetsShuang"),
+        BETS_DING_WEI("BetsDingWei");
+
+        @Getter
+        private String key;
+
+        Action(String key) {
+            this.key = key;
+        }
+
+        public static Action findActionByKey(String key){
+            for (Action action:
+                 Action.values()) {
+                if (key.equals(action.key)) return action;
+            }
+            throw new ClientErrorException("当前动作的key["+key+"]没有找到");
+        }
+    }
 
     /**
      * 请求的路径
@@ -32,7 +77,13 @@ public class GlobalConstant {
         BIND("/bind"),
         REGISTER("/register"),
         CONFIG("/config"),
-        PLAYER_SCORE("/player/score");
+        PLAYER_SCORE("/player/score"),
+        PLAYER_BET("/player/order"),
+        PLAYER_BETS_CHECK("/player/bets_check"),
+        PLAYER_ORDER("/player/order"),
+        PLAYER_RESULT("/player/result"),
+        ROBOT_INFO("/robot-info"),
+        BILL("/player/bill");
 
         @Getter
         private String uri;
@@ -42,44 +93,26 @@ public class GlobalConstant {
         }
     }
 
-    /**
-     qq玩家的动作
-     */
-    public enum Action{
-        UP(new ArrayList<String>()), DOWN(new ArrayList<String>()), BET(new ArrayList<String>()),CHECK(new ArrayList<String>());
-
-        @Getter
-        @Setter
-        private List<String> msgs;
-
-        Action(ArrayList<String> msgs) {
-            this.msgs = msgs;
-        }
-
-        public static Action witchAction(String msg) throws ClientErrorException {
-            if (UP.msgs.contains(msg)) return UP;
-            else if (DOWN.msgs.contains(msg)) return DOWN;
-            else if (CHECK.msgs.contains(msg)) return CHECK;
-            else if (BET.msgs.contains(msg)) return BET;
-            else throw new ClientErrorException("格式错误");
-        }
-
-        public static void setUp(Root root) {
-            root.getInstructs().forEach(instruct -> {
-
-                //上分
-                if (instruct.getKey().equals("UpperScoreInstruct")) UP.getMsgs().addAll(Arrays.asList(instruct.getValue().split("|")));
-                //下分
-                if (instruct.getKey().equals("LowerScoreInstruct")) DOWN.getMsgs().addAll(Arrays.asList(instruct.getValue().split("|")));
-                //查分
-                if (instruct.getKey().equals("QueryScoreInstruct")) CHECK.getMsgs().add(instruct.getValue());
-
-
-            });
-        }
+    public enum BotPrivence{
+        GROUP,
+        DUMMY
     }
 
+    @Getter
+    public enum ImageSize{
 
+       LISHI(575,31),KAIJIANG(500,231);
+       private int width;
+       private int heightInit;
 
+        ImageSize(int width, int heightInit) {
+            this.width = width;
+            this.heightInit = heightInit;
+        }
+
+        public int getHeight(Integer num){
+            return heightInit * num + heightInit;
+        }
+    }
 
 }

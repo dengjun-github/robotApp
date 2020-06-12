@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="512.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.MainController1">
+   <children>
+      <Button layoutX="150.0" layoutY="277.0" mnemonicParsing="false" onAction="#qq_login" prefHeight="23.0" prefWidth="100.0" text="登录QQ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text layoutX="186.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QQ账号">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="186.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QQ密码">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="qq_acount" layoutX="263.0" layoutY="127.0" text="1044474666" />
+      <PasswordField fx:id="qq_password" layoutX="263.0" layoutY="175.0" text="zxc123456" />
+      <Text fx:id="error" fill="#f81818" layoutX="41.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="615.12109375">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button layoutX="332.0" layoutY="277.0" mnemonicParsing="false" onAction="#qq_close" text="退出QQ登录">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="531.0" layoutY="274.0" mnemonicParsing="false" onAction="#openGame" text="开始游戏">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="groupId" layoutX="263.0" layoutY="215.0" text="864307874" />
+      <Text layoutX="186.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QQ群号">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button layoutX="150.0" layoutY="344.0" mnemonicParsing="false" onAction="#betsCheack" prefHeight="23.0" prefWidth="100.0" text="攻击核对">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="299.0" layoutY="344.0" mnemonicParsing="false" onAction="#open" prefHeight="23.0" prefWidth="100.0" text="开奖">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="473.0" layoutY="341.0" mnemonicParsing="false" onAction="#sendLishiImg" text="发送开始攻击图片">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

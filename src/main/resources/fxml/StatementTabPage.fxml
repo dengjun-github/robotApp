@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.dj.controller.StatementTabController"
+            minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="1100.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="80.0" text="查询时间：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <DatePicker prefHeight="30.0" promptText="请选择开始日期"/>
+                <Label prefHeight="30.0" text="&lt;=&gt;">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20.0"/>
+                    </HBox.margin>
+                </Label>
+                <DatePicker prefHeight="30.0" promptText="请选择结束日期">
+                    <HBox.margin>
+                        <Insets left="20.0"/>
+                    </HBox.margin>
+                </DatePicker>
+                <ComboBox opacity="0.94" prefHeight="30.0" prefWidth="150.0" promptText="查询类型">
+                    <HBox.margin>
+                        <Insets left="40.0"/>
+                    </HBox.margin>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </ComboBox>
+                <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="查询时间段">
+                    <HBox.margin>
+                        <Insets left="40.0"/>
+                    </HBox.margin>
+                </ComboBox>
+                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="确认查询">
+                    <HBox.margin>
+                        <Insets left="40.0"/>
+                    </HBox.margin>
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <Button layoutX="1159.0" layoutY="59.0" mnemonicParsing="false" prefHeight="30.0" text="导出记录">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="1007.0" layoutY="59.0" mnemonicParsing="false" prefHeight="30.0" text="清理流水记录">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="858.0" layoutY="59.0" mnemonicParsing="false" prefHeight="30.0" text="每期盈利记录">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <AnchorPane layoutX="791.0" layoutY="91.0" prefHeight="252.0" prefWidth="456.0"
+                    style="-fx-border-style: dashed dashed none dashed;"/>
+        <AnchorPane layoutX="791.0" layoutY="337.0" prefHeight="252.0" prefWidth="456.0"
+                    style="-fx-border-style: dashed dashed dashed dashed;">
+            <children>
+                <ListView layoutX="3.0" layoutY="3.0" prefHeight="137.0" prefWidth="452.0"
+                          AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0"
+                          AnchorPane.topAnchor="2.0"/>
+                <Label layoutX="34.0" layoutY="156.0" text="账号：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField layoutX="83.0" layoutY="153.0" prefHeight="27.0" prefWidth="145.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextField>
+                <Button layoutX="265.0" layoutY="151.0" mnemonicParsing="false" text="点击指定查询">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+                <Button layoutX="265.0" layoutY="206.0" mnemonicParsing="false" text="发送账单至邮箱">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="6.0" layoutY="59.0" prefHeight="155.0" prefWidth="787.0">
+            <children>
+                <HBox alignment="CENTER" layoutX="34.0" layoutY="41.0" prefHeight="81.0" prefWidth="784.0"
+                      AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0"
+                      AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label text="上下分总统计：">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="下注盈利统计：">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="80.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="1000000">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutY="79.0" prefHeight="76.0" prefWidth="786.0">
+                    <children>
+                        <Label text="总统计人数：">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="100000">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="总下注次数：">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="35.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="1000000">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="总下注金额：">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="35.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="1000000">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="211.0" prefHeight="378.0" prefWidth="791.0">
+            <children>
+                <TableView layoutX="143.0" layoutY="71.0" prefHeight="378.0" prefWidth="791.0"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn prefWidth="160.0" text="账号"/>
+                        <TableColumn prefWidth="174.0" text="昵称"/>
+                        <TableColumn prefWidth="111.0" text="总上分"/>
+                        <TableColumn prefWidth="126.0" text="总下分"/>
+                        <TableColumn prefWidth="125.0" text="下注盈利(玩家)"/>
+                        <TableColumn prefWidth="93.0" text="是否假人"/>
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="6.0" layoutY="589.0" prefHeight="336.0" prefWidth="1237.0">
+            <children>
+                <TableView layoutX="91.0" layoutY="68.0" prefHeight="336.0" prefWidth="1237.0"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn prefWidth="300.0" text="开奖结果"/>
+                        <TableColumn prefWidth="177.0" text="分数"/>
+                        <TableColumn prefWidth="610.0" text="下注内容"/>
+                        <TableColumn prefWidth="131.0" text="盈利(玩家)"/>
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

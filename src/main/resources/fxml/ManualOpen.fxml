@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="456.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.ManualOpenController">
+   <children>
+      <AnchorPane prefHeight="270.0" prefWidth="320.0">
+         <children>
+            <TableView layoutY="14.0" prefHeight="270.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn prefWidth="95.0" text="期数" />
+                <TableColumn prefWidth="76.0" text="下注人数" />
+                  <TableColumn prefWidth="84.0" text="下注总金额" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="34.0" layoutY="283.0" text="开奖号码：">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="118.0" layoutY="277.0" prefHeight="33.0" prefWidth="168.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <CheckBox layoutX="118.0" layoutY="330.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="168.0" text="开奖账单发送至群内">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="118.0" layoutY="365.0" mnemonicParsing="false" text="选中项开奖" />
+      <Button layoutX="207.0" layoutY="365.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="选中项退款" />
+      <Button layoutX="118.0" layoutY="410.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="168.0" text="忽略官网卡奖封盘流程" />
+   </children>
+</AnchorPane>

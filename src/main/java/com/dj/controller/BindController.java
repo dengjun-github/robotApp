@@ -2,40 +2,54 @@ package com.dj.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.dj.App;
-import com.dj.pojo.request.user.UserBind;
-import com.dj.net.WebClientVerticle;
+import com.dj.entity.pojo.request.user.UserBind;
 import com.dj.util.HttpResult;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
-import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static com.dj.util.GlobalConstant.*;
-import static com.dj.util.GlobalConstant.RequstUri.*;
+import static com.dj.net.VertxWebClient.RestFul.POST;
+import static com.dj.net.VertxWebClient.httpRequest;
+import static com.dj.util.GlobalConstant.HOST;
+import static com.dj.util.GlobalConstant.PORT;
+import static com.dj.util.GlobalConstant.RequstUri.BIND;
+import static com.dj.util.SimpleTools.simpleTools;
 
 public class BindController implements Initializable {
+
+    @FXML
+    private Label systemLabel;
+
+    @FXML
+    private Label userNameLabel;
 
     @FXML
     private TextField account;
 
     @FXML
-    private TextField security_key;
-
-    private App application;
+    private Label securitykeyLabel;
 
     @FXML
-    private Text error;
+    private TextField security_key;
 
+    @FXML
+    private Button bindButton;
+
+    @FXML
+    private Button bindCardButton;
+
+    @FXML
+    private Button returnButton;
+
+
+    private App application;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,8 +57,12 @@ public class BindController implements Initializable {
     }
 
 
-    public void bind(ActionEvent actionEvent) {
-        WebClientVerticle.httpPost(PORT, HOST,BIND.getUri(),(JSONObject) JSONObject.toJSON(new UserBind(account.getText(),security_key.getText())),null,
+    /**
+     * 监听"绑定"按钮事件
+     * @param actionEvent
+     */
+    public void bindEvent(ActionEvent actionEvent) {
+        httpRequest(PORT, HOST,BIND.getUri(),(JSONObject) JSONObject.toJSON(new UserBind(account.getText(),security_key.getText())),null, POST,
                 res -> {
                     if (res.succeeded()) {
                         HttpResult result = res.result().body();
@@ -59,18 +77,31 @@ public class BindController implements Initializable {
                                     login.setUser(account.getText());
                                 }
                             });
-
                         } else {
-                            error.setText(result.getMessage());
+                            Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR,"绑定卡密","错误",result.getMessage()));
                         }
                     } else {
-                        error.setText("服务器异常");
+                        Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR,"绑定卡密","错误","服务器出现未知异常,请联系管理员"));
                     }
                 });
     }
 
+    /**
+     * 监听"重置"按钮事件
+     * @param actionEvent
+     */
     public void clear(ActionEvent actionEvent) {
+        account.setText(null);
+        security_key.setText(null);
+    }
 
+    /**
+     * 监听"返回"按钮事件
+     * @param event
+     */
+    @FXML
+    void retrunEvent(ActionEvent event) {
+        application.gotologin();
     }
 
     public void setApp(App app) {

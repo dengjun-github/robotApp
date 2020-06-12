@@ -1,0 +1,1511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.dj.controller.DummyTabPageController" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+            prefWidth="200.0">
+    <children>
+        <TabPane layoutX="310.0" layoutY="99.0" prefHeight="925.0" prefWidth="1257.0"
+                 tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="260.0"
+                 tabMinHeight="50.0" tabMinWidth="260.0" AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="操控台">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="801.0"
+                                    prefWidth="1257.0">
+                            <children>
+                                <AnchorPane prefHeight="196.0" prefWidth="1257.0">
+                                    <children>
+                                        <AnchorPane layoutY="14.0" prefHeight="33.0"
+                                                    prefWidth="1257.0">
+                                            <children>
+                                                <HBox layoutX="100.0" layoutY="-2.0"
+                                                      prefHeight="98.0" prefWidth="1257.0"
+                                                      AnchorPane.bottomAnchor="0.0"
+                                                      AnchorPane.leftAnchor="0.0"
+                                                      AnchorPane.rightAnchor="0.0"
+                                                      AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Label text="手动下注设置：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Button mnemonicParsing="false"
+                                                                text="全开始">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="700.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                        <Button mnemonicParsing="false"
+                                                                text="全结束">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="70.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </AnchorPane>
+                                        <GridPane layoutY="47.0" prefHeight="103.0"
+                                                  prefWidth="1257.0"
+                                                  style="-fx-background-color: #FFE4C4;">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES"
+                                                                   minWidth="10.0"
+                                                                   prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES"
+                                                                   minWidth="10.0"
+                                                                   prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0"
+                                                                prefHeight="30.0"
+                                                                vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0"
+                                                                prefHeight="30.0"
+                                                                vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0"
+                                                      prefWidth="200.0"
+                                                      style="-fx-border-color: #72951d;">
+                                                    <children>
+                                                        <Label text="群1：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Label text="内容：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Button mnemonicParsing="false"
+                                                                prefHeight="19.0"
+                                                                prefWidth="58.0" text="发送">
+                                                            <font>
+                                                                <Font size="15.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0"
+                                                      prefWidth="200.0"
+                                                      style="-fx-border-color: #72951d;"
+                                                      GridPane.columnIndex="1">
+                                                    <children>
+                                                        <Label text="群2：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Label text="内容：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Button mnemonicParsing="false"
+                                                                prefHeight="19.0"
+                                                                prefWidth="58.0" text="发送">
+                                                            <font>
+                                                                <Font size="15.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0"
+                                                      prefWidth="200.0"
+                                                      style="-fx-border-color: #72951d;"
+                                                      GridPane.rowIndex="1">
+                                                    <children>
+                                                        <Label text="群3：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Label text="内容：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Button mnemonicParsing="false"
+                                                                prefHeight="19.0"
+                                                                prefWidth="58.0" text="发送">
+                                                            <font>
+                                                                <Font size="15.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0"
+                                                      prefWidth="200.0"
+                                                      style="-fx-border-color: #72951d;"
+                                                      GridPane.columnIndex="1"
+                                                      GridPane.rowIndex="1">
+                                                    <children>
+                                                        <Label text="群4：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Label text="内容：">
+                                                            <font>
+                                                                <Font size="20.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <TextField/>
+                                                        <Button mnemonicParsing="false"
+                                                                prefHeight="19.0"
+                                                                prefWidth="58.0" text="发送">
+                                                            <font>
+                                                                <Font size="15.0"/>
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="50.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </GridPane>
+                                        <HBox alignment="CENTER" layoutX="1.0" layoutY="152.0"
+                                              prefHeight="40.0" prefWidth="1257.0"
+                                              spacing="15.0">
+                                            <children>
+                                                <Button mnemonicParsing="false"
+                                                        prefHeight="32.0" prefWidth="607.0"
+                                                        text="增加一行群">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false"
+                                                        prefHeight="32.0" prefWidth="607.0"
+                                                        text="减少一行群">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </AnchorPane>
+                                <HBox alignment="CENTER_LEFT" layoutY="187.0" prefHeight="47.0"
+                                      prefWidth="1257.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" text="全选">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="10.0"/>
+                                            </HBox.margin>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="全选">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="5.0"/>
+                                            </HBox.margin>
+                                        </Button>
+                                        <TextField>
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="25.0"/>
+                                            </HBox.margin>
+                                        </TextField>
+                                        <Button mnemonicParsing="false" text="全选">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="20.0"/>
+                                            </HBox.margin>
+                                        </Button>
+                                        <Label text="|">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="25.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField>
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="25.0"/>
+                                            </HBox.margin>
+                                        </TextField>
+                                        <Button mnemonicParsing="false" text="一键修改所有人方案机器人QQ">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="20.0"/>
+                                            </HBox.margin>
+                                        </Button>
+                                        <Label text="|">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="25.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <ComboBox prefHeight="32.0" prefWidth="150.0"
+                                                  promptText="请选择方案">
+                                            <HBox.margin>
+                                                <Insets left="25.0"/>
+                                            </HBox.margin>
+                                        </ComboBox>
+                                        <Button mnemonicParsing="false" text="修改方案">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="15.0"/>
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <TableView layoutX="1.0" layoutY="234.0" prefHeight="562.0"
+                                           prefWidth="1257.0">
+                                    <columns>
+                                        <TableColumn prefWidth="39.0"/>
+                                        <TableColumn prefWidth="135.0" text="QQ"/>
+                                        <TableColumn prefWidth="125.0" text="昵称"/>
+                                        <TableColumn prefWidth="91.0" text="状态"/>
+                                        <TableColumn prefWidth="93.0" text="余额"/>
+                                        <TableColumn prefWidth="111.0" text="运行时间"/>
+                                        <TableColumn prefWidth="111.0" text="注数"/>
+                                        <TableColumn prefWidth="265.0" text="最后发言时间"/>
+                                        <TableColumn prefWidth="177.0" text="最后发言内容"/>
+                                        <TableColumn prefWidth="109.0" text="方案"/>
+                                    </columns>
+                                </TableView>
+                                <HBox alignment="CENTER" layoutY="796.0" prefHeight="91.0"
+                                      prefWidth="1257.0" spacing="50.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" text="勾选的账号开始">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="勾选的账号停止">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="勾选的账号上分">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="勾选的账号结账">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="所有运行的账号上分">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" text="所有运行的账号大洋结账">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                    prefWidth="200.0">
+                            <children>
+                                <AnchorPane prefHeight="880.0" prefWidth="261.0">
+                                    <children>
+                                        <VBox layoutX="26.0" layoutY="117.0" prefHeight="601.0"
+                                              prefWidth="209.0"
+                                              style="-fx-border-color: #00BFFF;">
+                                            <children>
+                                                <Label alignment="CENTER" prefWidth="209.0"
+                                                       style="-fx-background-color: #BEBEBE;"
+                                                       text="默认方案">
+                                                    <font>
+                                                        <Font size="20.0"/>
+                                                    </font>
+                                                    <VBox.margin>
+                                                        <Insets top="10.0"/>
+                                                    </VBox.margin>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <Button layoutX="47.0" layoutY="26.0"
+                                                mnemonicParsing="false" prefHeight="23.0"
+                                                prefWidth="173.0" text="复制方案">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button layoutX="26.0" layoutY="65.0"
+                                                mnemonicParsing="false" prefHeight="32.0"
+                                                prefWidth="104.0" text="添加方案">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button layoutX="143.0" layoutY="65.0"
+                                                mnemonicParsing="false" prefHeight="32.0"
+                                                prefWidth="104.0" text="删除方案">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </AnchorPane>
+                                <TabPane layoutX="261.0" layoutY="14.0" prefHeight="866.0"
+                                         prefWidth="987.0" tabClosingPolicy="UNAVAILABLE"
+                                         tabMinWidth="120.0">
+                                    <tabs>
+                                        <Tab text="默认方案">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0"
+                                                            prefHeight="267.0"
+                                                            prefWidth="219.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT"
+                                                              prefHeight="31.0"
+                                                              prefWidth="991.0" spacing="20.0">
+                                                            <children>
+                                                                <Label text="开奖后：">
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                    <HBox.margin>
+                                                                        <Insets left="15.0"/>
+                                                                    </HBox.margin>
+                                                                </Label>
+                                                                <TextField prefHeight="23.0"
+                                                                           prefWidth="62.0"
+                                                                           promptText="开始时间"/>
+                                                                <Label text="秒到">
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField prefHeight="23.0"
+                                                                           prefWidth="62.0"
+                                                                           promptText="结束时间"/>
+                                                                <Label text="秒期间内下注">
+                                                                    <font>
+                                                                        <Font size="14.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <AnchorPane layoutX="10.0"
+                                                                    layoutY="53.0"
+                                                                    prefHeight="204.0"
+                                                                    prefWidth="966.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <VBox layoutX="63.0"
+                                                                      layoutY="19.0"
+                                                                      prefHeight="185.0"
+                                                                      prefWidth="966.0"
+                                                                      AnchorPane.bottomAnchor="0.0"
+                                                                      AnchorPane.leftAnchor="0.0"
+                                                                      AnchorPane.rightAnchor="0.0"
+                                                                      AnchorPane.topAnchor="19.0">
+                                                                    <children>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="开启">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </CheckBox>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="21.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="\%概率    去零头发送">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="十位">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="30.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="百位">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="千位">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <TextField
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="362.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <Label text="积分">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="-">
+                                                                                    <font>
+                                                                                        <Font size="26.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="内容">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        prefHeight="28.0"
+                                                                                        prefWidth="566.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="30.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <Label text="积分">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="-">
+                                                                                    <font>
+                                                                                        <Font size="26.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="内容">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        prefHeight="28.0"
+                                                                                        prefWidth="566.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="30.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <Label text="积分">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="-">
+                                                                                    <font>
+                                                                                        <Font size="26.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="内容">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        prefHeight="28.0"
+                                                                                        prefWidth="566.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="30.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <Label text="积分">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="-">
+                                                                                    <font>
+                                                                                        <Font size="26.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="32.0"
+                                                                                        prefWidth="57.0">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="内容">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        prefHeight="28.0"
+                                                                                        prefWidth="566.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="30.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutX="10.0"
+                                                                    layoutY="275.0"
+                                                                    prefHeight="137.0"
+                                                                    prefWidth="966.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <VBox layoutX="2.0"
+                                                                      layoutY="14.0"
+                                                                      prefHeight="123.0"
+                                                                      prefWidth="964.0"
+                                                                      AnchorPane.bottomAnchor="1.0"
+                                                                      AnchorPane.leftAnchor="1.0"
+                                                                      AnchorPane.rightAnchor="1.0"
+                                                                      AnchorPane.topAnchor="13.0">
+                                                                    <children>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="开启先问上分类型再上分">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="440.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="50.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="积分低于">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <TextField
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="50.0"/>
+                                                                                <Label text="时，自动上分">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="539.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="50.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="复">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="15.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                                <Button mnemonicParsing="false"
+                                                                                        text="改">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                </Button>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT"
+                                                                              prefHeight="100.0"
+                                                                              prefWidth="200.0">
+                                                                            <children>
+                                                                                <CheckBox
+                                                                                        mnemonicParsing="false"
+                                                                                        text="上分机器人回复@">
+                                                                                    <font>
+                                                                                        <Font size="14.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </CheckBox>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="26.0"
+                                                                                        prefWidth="91.0"
+                                                                                        promptText="关键字">
+                                                                                    <HBox.margin>
+                                                                                        <Insets/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="后">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="65.0"
+                                                                                        promptText="开始时间">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="20.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="秒到">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                    <HBox.margin>
+                                                                                        <Insets/>
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <TextField
+                                                                                        alignment="CENTER"
+                                                                                        prefHeight="23.0"
+                                                                                        prefWidth="63.0"
+                                                                                        promptText="结束时间">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="10.0"/>
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <Label text="秒时间内，开始当期下注">
+                                                                                    <font>
+                                                                                        <Font size="16.0"/>
+                                                                                    </font>
+                                                                                </Label>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutX="10.0"
+                                                                    layoutY="435.0"
+                                                                    prefHeight="64.0"
+                                                                    prefWidth="967.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <HBox alignment="CENTER_LEFT"
+                                                                      layoutX="2.0"
+                                                                      layoutY="9.0"
+                                                                      prefHeight="49.0"
+                                                                      prefWidth="965.0"
+                                                                      AnchorPane.bottomAnchor="8.0"
+                                                                      AnchorPane.leftAnchor="2.0"
+                                                                      AnchorPane.rightAnchor="2.0"
+                                                                      AnchorPane.topAnchor="9.0">
+                                                                    <children>
+                                                                        <CheckBox
+                                                                                mnemonicParsing="false"
+                                                                                text="每期随机">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </CheckBox>
+                                                                        <TextField
+                                                                                prefHeight="23.0"
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="\%  概率回复">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefHeight="23.0"
+                                                                                prefWidth="613.0">
+                                                                            <HBox.margin>
+                                                                                <Insets left="30.0"/>
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutX="11.0"
+                                                                    layoutY="532.0"
+                                                                    prefHeight="74.0"
+                                                                    prefWidth="967.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <HBox alignment="CENTER_LEFT"
+                                                                      layoutX="2.0"
+                                                                      layoutY="9.0"
+                                                                      prefHeight="49.0"
+                                                                      prefWidth="965.0"
+                                                                      AnchorPane.bottomAnchor="8.0"
+                                                                      AnchorPane.leftAnchor="2.0"
+                                                                      AnchorPane.rightAnchor="2.0"
+                                                                      AnchorPane.topAnchor="9.0">
+                                                                    <children>
+                                                                        <CheckBox
+                                                                                mnemonicParsing="false"
+                                                                                text="每期随机">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </CheckBox>
+                                                                        <TextField
+                                                                                prefHeight="23.0"
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="\%  概率回复">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefHeight="23.0"
+                                                                                prefWidth="613.0">
+                                                                            <HBox.margin>
+                                                                                <Insets left="30.0"/>
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutX="11.0"
+                                                                    layoutY="636.0"
+                                                                    prefHeight="74.0"
+                                                                    prefWidth="967.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <Label layoutX="27.0"
+                                                                       layoutY="-9.0"
+                                                                       style="-fx-background-color: #D3D3D3"
+                                                                       text="休息设置：">
+                                                                    <font>
+                                                                        <Font size="16.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <HBox alignment="CENTER_LEFT"
+                                                                      layoutY="14.0"
+                                                                      prefHeight="65.0"
+                                                                      prefWidth="965.0">
+                                                                    <children>
+                                                                        <CheckBox
+                                                                                mnemonicParsing="false"
+                                                                                text="开启工作/休息">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </CheckBox>
+                                                                        <TextField
+                                                                                prefHeight="23.0"
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="分钟到">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="分钟休息，">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="分钟到">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefWidth="45.0"/>
+                                                                        <Label text="工作">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutX="10.0"
+                                                                    layoutY="754.0"
+                                                                    prefHeight="75.0"
+                                                                    prefWidth="973.0"
+                                                                    style="-fx-border-color: #1E90FF">
+                                                            <children>
+                                                                <HBox alignment="CENTER_LEFT"
+                                                                      layoutX="20.0"
+                                                                      layoutY="14.0"
+                                                                      prefHeight="47.0"
+                                                                      prefWidth="941.0">
+                                                                    <children>
+                                                                        <CheckBox
+                                                                                mnemonicParsing="false"
+                                                                                text="开启每期">
+                                                                            <font>
+                                                                                <Font size="16.0"/>
+                                                                            </font>
+                                                                        </CheckBox>
+                                                                        <TextField
+                                                                                prefHeight="28.0"
+                                                                                prefWidth="75.0">
+                                                                            <font>
+                                                                                <Font size="14.0"/>
+                                                                            </font>
+                                                                            <HBox.margin>
+                                                                                <Insets left="15.0"/>
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <Label text="\% 的概率二次下注    /    二次下注相隔时间：">
+                                                                            <font>
+                                                                                <Font size="18.0"/>
+                                                                            </font>
+                                                                            <HBox.margin>
+                                                                                <Insets left="15.0"/>
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefHeight="28.0"
+                                                                                prefWidth="75.0"
+                                                                                promptText="开始秒数">
+                                                                            <font>
+                                                                                <Font size="14.0"/>
+                                                                            </font>
+                                                                        </TextField>
+                                                                        <Label text="秒到">
+                                                                            <font>
+                                                                                <Font size="18.0"/>
+                                                                            </font>
+                                                                            <HBox.margin>
+                                                                                <Insets left="15.0"/>
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <TextField
+                                                                                prefHeight="28.0"
+                                                                                prefWidth="75.0"
+                                                                                promptText="结束秒数">
+                                                                            <font>
+                                                                                <Font size="14.0"/>
+                                                                            </font>
+                                                                            <HBox.margin>
+                                                                                <Insets left="15.0"/>
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <Label text="秒">
+                                                                            <font>
+                                                                                <Font size="18.0"/>
+                                                                            </font>
+                                                                            <HBox.margin>
+                                                                                <Insets left="15.0"/>
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <Label layoutX="40.0" layoutY="265.0"
+                                                               style="-fx-background-color: #D3D3D3"
+                                                               text="上下分设置：">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="32.0" layoutY="43.0"
+                                                               style="-fx-background-color: #D3D3D3"
+                                                               text="内容下注设置：">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="40.0" layoutY="425.0"
+                                                               style="-fx-background-color: #D3D3D3"
+                                                               text="自动问历史设置：">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="40.0" layoutY="522.0"
+                                                               style="-fx-background-color: #D3D3D3"
+                                                               text="遇关键词自动恢复设置：">
+                                                            <font>
+                                                                <Font size="16.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="32.0" layoutY="745.0"
+                                                               style="-fx-background-color: #D3D3D3"
+                                                               text="开启会造成重复下注">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="登录">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                    prefWidth="200.0">
+                            <children>
+                                <TableView layoutX="18.0" layoutY="14.0" prefHeight="865.0"
+                                           prefWidth="692.0">
+                                    <columns>
+                                        <TableColumn editable="false" prefWidth="48.0"/>
+                                        <TableColumn prefWidth="121.0" text="账号"/>
+                                        <TableColumn prefWidth="142.0" text="密码"/>
+                                        <TableColumn minWidth="0.0" prefWidth="178.0"
+                                                     text="昵称"/>
+                                        <TableColumn prefWidth="117.0" text="状态"/>
+                                        <TableColumn prefWidth="83.0" text="是否自动下注"/>
+                                    </columns>
+                                </TableView>
+                                <VBox alignment="CENTER" layoutX="798.0" layoutY="38.0"
+                                      prefHeight="322.0" prefWidth="359.0" spacing="10.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="78.0"
+                                              prefWidth="549.0" spacing="68.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" prefWidth="90.0"
+                                                        text="全开始">
+                                                    <font>
+                                                        <Font size="18.0"/>
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefWidth="90.0"
+                                                        text="全停止">
+                                                    <font>
+                                                        <Font size="18.0"/>
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="68.0"
+                                              prefWidth="508.0" spacing="68.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" prefWidth="90.0"
+                                                        text="全选">
+                                                    <font>
+                                                        <Font size="18.0"/>
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefWidth="90.0"
+                                                        text="反选">
+                                                    <font>
+                                                        <Font size="18.0"/>
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <Button mnemonicParsing="false" prefHeight="32.0"
+                                                prefWidth="250.0" text="登录勾选账号">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" prefWidth="250.0"
+                                                text="关闭勾选账号">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                        <Button mnemonicParsing="false" prefWidth="250.0"
+                                                text="删除勾选账号">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                                <AnchorPane layoutX="704.0" layoutY="360.0" prefHeight="526.0"
+                                            prefWidth="547.0">
+                                    <children>
+                                        <HBox layoutX="64.0" layoutY="36.0" prefHeight="88.0"
+                                              prefWidth="393.0">
+                                            <children>
+                                                <ImageView fitHeight="116.0" fitWidth="116.0"
+                                                           pickOnBounds="true"
+                                                           preserveRatio="true"/>
+                                                <VBox prefHeight="116.0" prefWidth="278.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT"
+                                                              prefHeight="100.0"
+                                                              prefWidth="200.0">
+                                                            <children>
+                                                                <Label text="QQ账号：">
+                                                                    <font>
+                                                                        <Font size="16.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField>
+                                                                    <HBox.margin>
+                                                                        <Insets left="15.0"/>
+                                                                    </HBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER_LEFT"
+                                                              prefHeight="100.0"
+                                                              prefWidth="200.0">
+                                                            <children>
+                                                                <Label text="QQ密码：">
+                                                                    <font>
+                                                                        <Font size="16.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField>
+                                                                    <HBox.margin>
+                                                                        <Insets left="15.0"/>
+                                                                    </HBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <CheckBox layoutX="330.0" layoutY="162.0"
+                                                  mnemonicParsing="false" text="自动登录"
+                                                  textFill="#066497">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </CheckBox>
+                                        <Button layoutX="213.0" layoutY="154.0"
+                                                mnemonicParsing="false" prefHeight="36.0"
+                                                prefWidth="70.0" text="登录" textFill="#066497"/>
+                                        <HBox alignment="CENTER" layoutX="14.0" layoutY="201.0"
+                                              prefHeight="49.0" prefWidth="524.0"
+                                              spacing="20.0">
+                                            <children>
+                                                <Button mnemonicParsing="false"
+                                                        prefHeight="36.0" prefWidth="70.0"
+                                                        text="添加"/>
+                                                <Button mnemonicParsing="false"
+                                                        prefHeight="36.0" prefWidth="70.0"
+                                                        text="删除"/>
+                                                <Button mnemonicParsing="false"
+                                                        prefHeight="36.0" prefWidth="70.0"
+                                                        text="修改"/>
+                                            </children>
+                                        </HBox>
+                                        <AnchorPane layoutX="37.0" layoutY="283.0"
+                                                    prefHeight="152.0" prefWidth="470.0"
+                                                    style="-fx-border-style: dashed;-fx-border-color:  #FF3030">
+                                            <children>
+                                                <Label layoutY="4.0" text="自动同意好友邀请进群">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                                <RadioButton layoutX="58.0" layoutY="33.0"
+                                                             mnemonicParsing="false"
+                                                             text="指定同意好友">
+                                                    <font>
+                                                        <Font size="14.0"/>
+                                                    </font>
+                                                </RadioButton>
+                                                <RadioButton layoutX="201.0" layoutY="33.0"
+                                                             mnemonicParsing="false"
+                                                             text="全部同意">
+                                                    <font>
+                                                        <Font size="14.0"/>
+                                                    </font>
+                                                </RadioButton>
+                                                <TextField layoutX="58.0" layoutY="65.0"
+                                                           prefHeight="32.0" prefWidth="233.0"
+                                                           promptText="输入指定的QQ号码"/>
+                                                <Label layoutX="61.0" layoutY="106.0"
+                                                       text="说明：指定自动同意邀请的好友QQ账号" textFill="RED">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

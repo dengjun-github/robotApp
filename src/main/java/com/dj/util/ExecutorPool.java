@@ -1,9 +1,16 @@
 package com.dj.util;
 
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ExecutorPool {
+    private static final Logger logger = LoggerFactory.getLogger(ExecutorPool.class);
+
+    private static final TimeUnit MILLI_SECONDS_TIME_UNIT = TimeUnit.MILLISECONDS;
 //    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
 //    private static final int CORE_POOL_SIZE = CPU_COUNT + 1;
 //    private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
@@ -29,7 +36,21 @@ public class ExecutorPool {
 
     public static final ExecutorService executorService = Executors.newCachedThreadPool();
 
-//    public static void main(String[] args) {
-//        THREAD_POOL_EXECUTOR
-//    }
+
+    /*public void gracefulShutdown(final ExecutorService service, final Duration timeout)
+            throws InterruptedException {
+        service.shutdown(); // Disable new tasks from being submitted禁止提交新任务
+        final long timeout_in_unit_of_miliseconds = timeout.toMillis();
+        // Wait a while for existing tasks to terminate现有任务需要一段时间才能终止
+        if (!service.awaitTermination(timeout_in_unit_of_miliseconds, MILLI_SECONDS_TIME_UNIT)) {
+            service.shutdownNow(); // Cancel currently executing tasks  
+            // 取消当前正在执行的任务
+
+            // Wait a while for tasks to respond to being cancelled等待任务响应被取消
+            if (!service.awaitTermination(timeout_in_unit_of_miliseconds, MILLI_SECONDS_TIME_UNIT)) {
+                logger.error("The executor service did not terminate.");
+            }
+        }
+    }*/
+
 }
