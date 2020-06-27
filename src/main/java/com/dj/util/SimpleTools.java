@@ -1,28 +1,38 @@
 package com.dj.util;
 
-import com.dj.App;
+import com.dj.Application;
+import com.dj.Exception.ClientErrorException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import serialize.pojo.Settings;
 
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 
+import static com.dj.util.GlobalConstant.SYS_ICON;
+
 public class SimpleTools {
 
     public static SimpleTools simpleTools = new SimpleTools();
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     /**
      * 操作结果：JavaFX设置按钮、标签等组件的图标
@@ -35,6 +45,9 @@ public class SimpleTools {
             labeleds[i].setGraphic(new ImageView(new Image("file:" + imagePaths[i])));
         }
     }
+
+
+
 
     /**
      * 操作结果：清空文本框组件的内容
@@ -95,6 +108,12 @@ public class SimpleTools {
         }
     }
 
+    public void setBackgrondColor(Node node){
+        node.addEventHandler(MouseEvent.MOUSE_ENTERED, e->node.setStyle("-fx-background-color: #CD3333"));
+        node.addEventHandler(MouseEvent.MOUSE_EXITED, e->node.setStyle("-fx-background-color:  #00BFFF"));
+    }
+
+
     /**
      * 操作结果：自定义一个JavaFX的对话框
      *
@@ -105,20 +124,6 @@ public class SimpleTools {
      * @return boolean 如果点击了”确定“那么就返回true，否则返回false
      */
     public boolean informationDialog(Alert.AlertType alterType, String title, String header, String message) {
-//        final Boolean flag = new Boolean(false);
-//        Platform.runLater(() ->{
-//            Alert alert = new Alert(alterType);
-//            alert.setTitle(title);
-//            alert.setHeaderText(header);
-//            if (null != message) alert.setContentText(message);
-//            Optional<ButtonType> buttonType = alert.showAndWait();
-//            if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
-//                return flag;// 如果点击了“确定”就返回true
-//            }
-//        });
-//
-
-
         // 按钮部分可以使用预设的也可以像这样自己 new 一个
         Alert alert = new Alert(alterType, message, new ButtonType("取消", ButtonBar.ButtonData.CANCEL_CLOSE), new ButtonType("确定", ButtonBar.ButtonData.YES));
         // 设置对话框的标题
@@ -133,6 +138,8 @@ public class SimpleTools {
             return false;
         }
     }
+
+
 
     /**
      * 操作结果：JavaFX判断是否登录成功
@@ -196,27 +203,55 @@ public class SimpleTools {
     /**
      * 制作一个窗口
      */
-    public Stage getScoreStage(String fxml, String title, double width, double height, double x, double y) throws IOException {
+    public Stage createStage(GlobalConstant.StageInfo stageInfo, Stage referStage) {
         FXMLLoader loader = new FXMLLoader();
-        InputStream in = App.class.getResourceAsStream(fxml);
+        InputStream in = Application.class.getResourceAsStream(stageInfo.getFxmlPath());
         loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(App.class.getResource(fxml));
-        AnchorPane page;
+        loader.setLocation(Application.class.getResource(stageInfo.getFxmlPath()));
+        AnchorPane page = null;
         try {
             page = (AnchorPane) loader.load(in);
-        } finally {
-            in.close();
+            Scene scene = new Scene(page);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.sizeToScene();
+            if (null != stageInfo.getTitle()) stage.setTitle(stageInfo.getTitle());
+            stage.setResizable(true);
+            page.setOnMousePressed(event -> {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            });
+
+            page.setOnMouseDragged(event -> {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            });
+
+            stage.getIcons().add(new Image(SYS_ICON.toURI().toURL().toString()));
+
+            if (referStage != null) {
+                stage.setX((referStage.getWidth()-stageInfo.getWidth())/2+referStage.getX());
+                stage.setY((referStage.getHeight()-stageInfo.getHeight())/2+referStage.getY());
+            } else {
+                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+                stage.setX((screenBounds.getWidth() - stageInfo.getWidth()) / 2);
+                stage.setY((screenBounds.getHeight() - stageInfo.getHeight()) / 2);
+            }
+
+            stage.initStyle(stageInfo.getStyle());
+            Application.ALL_STAGE.put(stageInfo,stage);
+            return stage;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        Scene scene = new Scene(page);
-        Stage stage = new Stage();
-        stage.setWidth(width);
-        stage.setHeight(height);
-        stage.setScene(scene);
-        stage.sizeToScene();
-        stage.setTitle(title);
-        stage.setX(x);
-        stage.setY(y);
-        return stage;
+
+        return null;
     }
 
     /**
@@ -227,14 +262,43 @@ public class SimpleTools {
      * @return
      */
     public Stage adjustStage2Center(Stage stage,double width, double height){
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((screenBounds.getWidth() - width) / 2);
-        stage.setY((screenBounds.getHeight() - height) / 2);
+
 
 //        final Scene scene = new Scene( new Group(), width, height);
 //        stage.setScene(scene);
         return stage;
     }
+
+
+
+    public Object isSelect(TableView tableView) throws ClientErrorException {
+        Object selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            throw new ClientErrorException("请选择要处理的项");
+        }
+
+        return selectedItem;
+    }
+
+    public void initCheckBox(CheckBox[] checkBoxes, String[] keys){
+        for (int i = 0; i < checkBoxes.length; i++) {
+            Settings settings = SettingUtils.getSettingsByKey(keys[i]);
+            checkBoxes[i].setSelected(settings.getStatus());
+            SettingUtils.setCheckBox(checkBoxes[i],settings);
+        }
+    }
+
+    public void initTextField(TextField[] textField,String[] keys,String jsonKey){
+        for (int i = 0; i < textField.length; i++) {
+            String value = SettingUtils.getJsonByKey(keys[i]).get(jsonKey).toString();
+
+            if (StringUtil.isNotBlank(value)) {
+                textField[i].setText(value);
+            }
+        }
+    }
+
+
 
 
 }

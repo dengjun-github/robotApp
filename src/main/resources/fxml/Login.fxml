@@ -1,65 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.LoginController">
-   <children>
-      <VBox prefHeight="393.0" prefWidth="600.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="systemLabel" text="龙猫机器人">
+<AnchorPane fx:id="rootLayout" prefHeight="358.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.LoginController">
+    <children>
+        <VBox prefHeight="358.0" prefWidth="450.0" style="-fx-background-color: #F8F8FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: #00BFFF;">
+                    <children>
+                        <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/title.png" />
+                            </image>
+                        </ImageView>
+                        <Label prefWidth="72.0" text="登录" textFill="SNOW">
+                            <font>
+                                <Font name="Serif Regular" size="18.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimizeButtonActionEvent" style="-fx-background-color: #00BFFF;">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/minimize.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets left="261.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonActionEvent" style="-fx-background-color: #00BFFF;">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/close.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="109.0" prefWidth="450.0">
+                    <children>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/sys.png" />
+                            </image>
+                     <HBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </HBox.margin>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">
+                    <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/account.png" />
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="userNameTextField" prefHeight="23.0" prefWidth="180.0" promptText="填写您的账号" style="-fx-background-color: #F8F8FF; -fx-border-color: #00BFFF;">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                  <Button mnemonicParsing="false" onAction="#resetPasswordButtonActionEvent" style="-fx-background-color: #F8F8FF;" text="找回密码">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/findPassword.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font size="14.0" />
                      </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="userNameLabel" text="用户名：">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Label>
-                  <TextField fx:id="userNameTextField" promptText="填写您的账号" text="dj123" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="passwordLabel" text="密   码 ：">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Label>
-                  <PasswordField fx:id="passwordTextField" promptText="填写您的密码" text="456789" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-               <children>
-                  <Button fx:id="logupButton" defaultButton="true" mnemonicParsing="false" onAction="#logupButtonEvent" prefHeight="40.0" prefWidth="80.0" text="登录">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonEvent" prefHeight="40.0" prefWidth="80.0" text="注册">
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="44.0" prefWidth="538.0">
+                    <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/password.png" />
+                            </image>
+                        </ImageView>
+                        <PasswordField fx:id="passwordTextField" prefHeight="23.0" prefWidth="180.0" promptText="填写您的密码" style="-fx-background-color: #F8F8FF; -fx-border-color: #00BFFF;">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </PasswordField>
+                        <Button mnemonicParsing="false" onAction="#rememberPasswordButtonActionEvent" style="-fx-background-color: #F8F8FF;" text="记住密码">
+                            <graphic>
+                                <ImageView fx:id="rememberImageView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/rememberPassword1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="450.0">
+               <children>
+                        <Button mnemonicParsing="false" onAction="#registerButtonActionEvent" style="-fx-background-color: #F8F8FF;" text="立即注册">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/register.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                     <HBox.margin>
+                        <Insets left="90.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                  <Button mnemonicParsing="false" onAction="#rechargeButtonActionEvent" style="-fx-background-color: #F8F8FF;" text="立即充值">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/recharge.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bindCardButton" mnemonicParsing="false" onAction="#bindCardEvent" prefHeight="40.0" prefWidth="80.0" text="绑卡">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
-         </children>
-      </VBox>
-   </children>
+                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="450.0">
+                    <children>
+                  <ImageView fitHeight="31.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/game.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="98.0" />
+                     </HBox.margin>
+                  </ImageView>
+                        <ComboBox fx:id="gameTypeComboBox" prefHeight="26.0" prefWidth="189.0" promptText="请选择彩种" style="-fx-background-color: #00BFFF;">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </ComboBox>
+                    </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="450.0" spacing="80.0">
+                    <children>
+                        <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonActionEvent" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #00BFFF;" text="立即登录" textFill="SNOW">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

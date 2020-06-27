@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="580.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.ScoreController">
+<AnchorPane prefHeight="580.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.ScoreManageController">
     <children>
         <TabPane id="scoreTab" layoutX="67.0" layoutY="144.0" prefHeight="580.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -29,7 +29,7 @@
                                     <children>
                                         <Label layoutX="14.0" layoutY="14.0" text="上分管理" />
                                         <Separator layoutX="65.0" layoutY="20.0" prefHeight="3.0" prefWidth="235.0" />
-                                        <HBox alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="29.0" prefWidth="300.0">
+                                        <HBox fx:id="upperHBox" alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="29.0" prefWidth="300.0">
                                             <children>
                                                 <Separator prefHeight="34.0" prefWidth="90.0" />
                                                 <Label text="暂无玩家上分" />
@@ -37,24 +37,24 @@
                                             </children>
                                         </HBox>
                                         <Label layoutX="23.0" layoutY="58.0" text="喊话内容：" />
-                                        <TextField layoutX="91.0" layoutY="54.0" prefHeight="28.0" prefWidth="185.0" />
+                                        <TextField fx:id="upperContentTextField" editable="false" layoutX="91.0" layoutY="54.0" prefHeight="28.0" prefWidth="185.0" />
                                         <Label layoutX="23.0" layoutY="94.0" text="请求上分：" />
-                                        <TextField layoutX="91.0" layoutY="90.0" prefHeight="23.0" prefWidth="59.0" />
-                                        <CheckBox layoutX="184.0" layoutY="94.0" mnemonicParsing="false" text="上分语音提醒" />
+                                        <TextField fx:id="upperScoreTextField" editable="false" layoutX="91.0" layoutY="90.0" prefHeight="23.0" prefWidth="59.0" />
+                                        <CheckBox fx:id="upperVoiceCheckBox" layoutX="184.0" layoutY="94.0" mnemonicParsing="false" text="上分语音提醒" />
                                         <HBox alignment="CENTER" layoutY="113.0" prefHeight="32.0" prefWidth="300.0" spacing="60.0">
                                             <children>
-                                                <Button mnemonicParsing="false" text="\@喊到" />
-                                                <Button mnemonicParsing="false" text="\@喊没到" />
-                                                <Button mnemonicParsing="false" text="忽略" />
+                                                <Button mnemonicParsing="false" onAction="#upperArriveActionEvent" text="\@喊到" />
+                                                <Button mnemonicParsing="false" onAction="#upperNotArriveActionEvent" text="\@喊没到" />
+                                                <Button mnemonicParsing="false" onAction="#upperIgnoreActionEvent" text="忽略" />
                                             </children>
                                         </HBox>
                                         <AnchorPane layoutY="145.0" prefHeight="132.0" prefWidth="300.0">
                                             <children>
-                                                <TableView layoutX="50.0" layoutY="-62.0" prefHeight="138.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="onUpperScoreTable" layoutX="50.0" layoutY="-62.0" prefHeight="138.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <columns>
-                                                        <TableColumn prefWidth="75.0" text="玩家" />
-                                                        <TableColumn prefWidth="113.0" text="信息(右键操作)" />
-                                                        <TableColumn prefWidth="110.0" text="类型" />
+                                                        <TableColumn fx:id="upperPlayerColumn" prefWidth="75.0" text="玩家" />
+                                                        <TableColumn fx:id="upperMessageColumn" prefWidth="113.0" text="信息(右键操作)" />
+                                                        <TableColumn fx:id="upperTypeColumn" prefWidth="110.0" text="类型" />
                                                     </columns>
                                                 </TableView>
                                             </children>
@@ -65,7 +65,7 @@
                                     <children>
                                         <Label layoutX="14.0" layoutY="14.0" text="下分管理" />
                                         <Separator layoutX="65.0" layoutY="20.0" prefHeight="3.0" prefWidth="235.0" />
-                                        <HBox alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="29.0" prefWidth="300.0">
+                                        <HBox fx:id="lowerHBox" alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="29.0" prefWidth="300.0">
                                             <children>
                                                 <Separator prefHeight="34.0" prefWidth="90.0" />
                                                 <Label text="暂无玩家下分" />
@@ -73,23 +73,23 @@
                                             </children>
                                         </HBox>
                                         <Label layoutX="23.0" layoutY="58.0" text="喊话内容：" />
-                                        <TextField layoutX="91.0" layoutY="54.0" prefHeight="28.0" prefWidth="185.0" />
+                                        <TextField fx:id="lowerContentTextField" editable="false" layoutX="91.0" layoutY="54.0" prefHeight="28.0" prefWidth="185.0" />
                                         <Label layoutX="23.0" layoutY="94.0" text="请求下分：" />
-                                        <TextField layoutX="91.0" layoutY="90.0" prefHeight="23.0" prefWidth="59.0" />
-                                        <CheckBox layoutX="184.0" layoutY="94.0" mnemonicParsing="false" text="下分语音提醒" />
+                                        <TextField fx:id="lowerScoreTextField" editable="false" layoutX="91.0" layoutY="90.0" prefHeight="23.0" prefWidth="59.0" />
+                                        <CheckBox fx:id="lowerVoiceCheckBox" layoutX="184.0" layoutY="94.0" mnemonicParsing="false" text="下分语音提醒" />
                                         <HBox alignment="CENTER" layoutY="113.0" prefHeight="32.0" prefWidth="300.0" spacing="60.0">
                                             <children>
-                                                <Button mnemonicParsing="false" text="\@喊查" />
-                                                <Button mnemonicParsing="false" text="忽略" />
+                                                <Button mnemonicParsing="false" onAction="#lowerArriveActionEvent" text="\@喊查" />
+                                                <Button mnemonicParsing="false" onAction="#lowerIgnoreActionEvent" text="忽略" />
                                             </children>
                                         </HBox>
                                         <AnchorPane layoutY="145.0" prefHeight="132.0" prefWidth="300.0">
                                             <children>
-                                                <TableView layoutX="50.0" layoutY="-62.0" prefHeight="138.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="onLowerScoreTable" layoutX="50.0" layoutY="-62.0" prefHeight="138.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <columns>
-                                                        <TableColumn prefWidth="75.0" text="玩家" />
-                                                        <TableColumn prefWidth="113.0" text="信息(右键操作)" />
-                                                        <TableColumn prefWidth="110.0" text="类型" />
+                                                        <TableColumn fx:id="lowerPlayerColumn" prefWidth="75.0" text="玩家" />
+                                                        <TableColumn fx:id="lowerMessageColumn" prefWidth="113.0" text="信息(右键操作)" />
+                                                        <TableColumn fx:id="lowerTypeColumn" prefWidth="110.0" text="类型" />
                                                     </columns>
                                                 </TableView>
                                             </children>
@@ -101,57 +101,8 @@
 
                     </content>
                 </Tab>
-                <Tab text="假人设置">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <AnchorPane layoutX="6.0" layoutY="14.0" prefHeight="122.0" prefWidth="287.0" style="-fx-border-color: #FFFAF0;-fx-border-style: sliod">
-                                    <children>
-                                        <Label layoutX="14.0" layoutY="28.0" text="白名单玩家请求上分超过" />
-                                        <TextField layoutX="146.0" layoutY="24.0" prefHeight="23.0" prefWidth="47.0" />
-                                        <Label layoutX="193.0" layoutY="28.0" text="秒自动(上分)处理" />
-                                        <TextArea layoutX="14.0" layoutY="68.0" prefHeight="50.0" prefWidth="274.0" />
-                                        <Label layoutX="14.0" layoutY="54.0" text="☟☟上分白名单☟☟" textFill="#f80000" />
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="6.0" layoutY="160.0" prefHeight="122.0" prefWidth="287.0" style="-fx-border-color: #FFFAF0;-fx-border-style: sliod">
-                                    <children>
-                                        <Label layoutX="14.0" layoutY="28.0" text="白名单玩家请求下分超过" />
-                                        <TextField layoutX="146.0" layoutY="24.0" prefHeight="23.0" prefWidth="47.0" />
-                                        <Label layoutX="193.0" layoutY="28.0" text="秒自动(上分)处理" />
-                                        <TextArea layoutX="14.0" layoutY="68.0" prefHeight="50.0" prefWidth="274.0" />
-                                        <Label layoutX="14.0" layoutY="54.0" text="☟☟下分白名单☟☟" textFill="#f80000" />
-                                    </children>
-                                </AnchorPane>
-                                <CheckBox layoutX="28.0" layoutY="6.0" mnemonicParsing="false" text="启用自动上分" />
-                                <CheckBox layoutX="28.0" layoutY="152.0" mnemonicParsing="false" text="启用自动下分" />
-                                <AnchorPane layoutX="14.0" layoutY="298.0" prefHeight="63.0" prefWidth="279.0" style="-fx-border-color: #FFFAF0;-fx-border-style: sliod">
-                                    <children>
-                                        <Label layoutX="28.0" layoutY="24.0" text="处理随机延时：" />
-                                        <TextField layoutX="112.0" layoutY="20.0" prefHeight="23.0" prefWidth="41.0" />
-                                        <Label layoutX="161.0" layoutY="24.0" text="~~" />
-                                        <TextField layoutX="185.0" layoutY="20.0" prefHeight="23.0" prefWidth="41.0" />
-                                        <Label layoutX="236.0" layoutY="24.0" text="秒" />
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="14.0" layoutY="381.0" prefHeight="63.0" prefWidth="279.0" style="-fx-border-color: #FFFAF0;-fx-border-style: sliod">
-                                    <children>
-                                        <Label layoutX="28.0" layoutY="24.0" text="处理随机延时：" />
-                                        <TextField layoutX="112.0" layoutY="20.0" prefHeight="23.0" prefWidth="41.0" />
-                                        <Label layoutX="161.0" layoutY="24.0" text="~~" />
-                                        <TextField layoutX="185.0" layoutY="20.0" prefHeight="23.0" prefWidth="41.0" />
-                                        <Label layoutX="236.0" layoutY="24.0" text="秒" />
-                                    </children>
-                                </AnchorPane>
-                                <CheckBox layoutX="28.0" layoutY="290.0" mnemonicParsing="false" text="假人自动上分" />
-                                <CheckBox layoutX="28.0" layoutY="373.0" mnemonicParsing="false" text="假人自动下分" />
-                                <CheckBox layoutX="28.0" layoutY="454.0" mnemonicParsing="false" text="自动隐藏上下分窗口" />
-                                <CheckBox layoutX="28.0" layoutY="484.0" mnemonicParsing="false" text="玩家分数下光后清理账单" />
-                                <CheckBox layoutX="28.0" layoutY="513.0" mnemonicParsing="false" text="是否使用汉字金额悬浮窗" />
-                                <CheckBox layoutX="181.0" layoutY="454.0" mnemonicParsing="false" text="窗口保持置顶" />
-                            </children>
-                        </AnchorPane>
-                    </content>
+                <Tab fx:id="DummyScoreSettingTab" text="假人设置">
+                    <fx:include fx:id="DummyScoreSettingTabPage" source="DummyScoreSettingTabPage.fxml" />
                 </Tab>
                 <Tab text="反馈设置">
                     <content>

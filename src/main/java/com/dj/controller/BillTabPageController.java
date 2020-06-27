@@ -1,40 +1,49 @@
 package com.dj.controller;
 
+import api.future.SendBillFutureListener;
+import api.order.SendBill;
+import com.dj.Application;
 import com.dj.Exception.ClientErrorException;
 import com.dj.entity.pojo.request.robot.RobotInfoByGroup;
 import com.dj.entity.pojo.response.OpenData;
 import com.dj.robot.GroupRobot;
 import com.dj.task.CountDownTask;
+import com.dj.util.ErrorCodeUtil;
 import com.dj.util.ExecutorPool;
-import com.dj.util.HttpResult;
+import com.dj.util.SettingUtils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
+import lombok.Getter;
+import lombok.Setter;
+import serialize.pojo.Keys;
+import serialize.pojo.option.SendBillOption;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import static com.dj.App.controllers;
+import static com.dj.Application.controllers;
 import static com.dj.entity.pojo.response.OpenData.NEW_OPEN_DATA;
 import static com.dj.handler.GroupHandler.groupHandler;
-import static com.dj.net.VertxWebClient.RestFul.GET;
-import static com.dj.net.VertxWebClient.httpRequest;
 import static com.dj.robot.GroupRobot.*;
-import static com.dj.util.AllFxmlPath.*;
 import static com.dj.util.GlobalConstant.*;
-import static com.dj.util.GlobalConstant.RequstUri.BILL;
+import static com.dj.util.GlobalConstant.StageInfo.*;
 import static com.dj.util.SimpleTools.simpleTools;
 
 public class BillTabPageController implements Initializable {
 
+    @FXML
+    private AnchorPane firstAn;
 
     @FXML
     private Label openCodeLabel;
@@ -46,7 +55,19 @@ public class BillTabPageController implements Initializable {
     private Label openResultLabel;
 
     @FXML
+    private CheckBox betVoiceCheckbox;
+
+    @FXML
+    private CheckBox closeVoiceCheckBox;
+
+    @FXML
+    private CheckBox scoreVoiceCheckBox;
+
+    @FXML
     private CheckBox scoreCheckBox;
+
+    @FXML
+    private TableView<?> billTable;
 
     @FXML
     private HBox countDownHBox;
@@ -87,13 +108,12 @@ public class BillTabPageController implements Initializable {
     @FXML
     private Button manualOperation;
 
-    private int countNumber;
-
-    private String text = "";
-
+    @Setter
+    @Getter
     private Stage mainStage;
 
     //上下分管理窗口
+    @Getter
     private Stage scoreManageStage;
 
     //上下分历史窗口
@@ -108,15 +128,26 @@ public class BillTabPageController implements Initializable {
     //添加或查找玩家窗口
     private Stage findOrAddPlayerStage;
 
+    @Getter
+    private Stage accountStage;
+
+
     private RobotLoginController robotLoginController;
+
+    private CountDownTask countDownTask;
+
+    private ScoreHistoryController scoreHistoryController;
+
+    private ContextMenu contextMenu = new ContextMenu();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         controllers.put(this.getClass().getName(),this);
+
         //获取开奖数据
         OpenData openData = (OpenData) groupHandler.getOpenData(true);
         OpenData.NEW_OPEN_DATA = openData;
-        System.out.println("执行了");
+        OpenData.setNewCodeResultList(openData);
         //刷新数据
         refreshOpenData(openData);
         timelabel();
@@ -135,13 +166,53 @@ public class BillTabPageController implements Initializable {
                 return RobotInfoByGroup.builder().groupAccount(string).build();
             }
         });
+
         //设置连接选择框被选中
         robotGroupComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
             if (newValue != null) {
                 GROUPID = Long.parseLong(newValue.getGroupAccount());
+            } else if (oldValue != null && newValue == null) {
+                robotGroupComboBox.getSelectionModel().select(oldValue);
             }
         });
+
+        //上下分窗口的监听
+        scoreCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            Stage scoreManage = Application.ALL_STAGE.get(SCORE_MANAGE);
+            if (null == scoreManage) {
+                scoreManage = simpleTools.createStage(SCORE_MANAGE,Application.ALL_STAGE.get(INDEX));
+            }
+            if (scoreCheckBox.isSelected()) {
+                scoreManage.show();
+                scoreManage.setOnCloseRequest(handler -> {
+                    scoreCheckBox.setSelected(false);
+                });
+            } else {
+                scoreManage.close();
+            }
+        });
+
+        CheckBox[] checkBoxes = new CheckBox[]{scoreVoiceCheckBox,betVoiceCheckbox,closeVoiceCheckBox,scoreCheckBox};
+
+        String [] keys = new String[]{Keys.SETTINGS_UPPER_OR_LOWER_VOICE_TIPS,Keys.SETTINGS_BETS_ORDER_VOICE_TOPS,Keys.SETTINGS_CLOSE_BET_VOICE_TIPS,Keys.SETTINGS_UPPER_OR_LOWER_WINDOW_SHOW};
+        simpleTools.initCheckBox(checkBoxes, keys);
+
+
+        contextMenu.getItems().addAll(
+                new MenuItem("修改玩家余额"),
+                new MenuItem("更新玩家昵称"),
+                new MenuItem("删除选中玩家"),
+                new MenuItem("修改玩家昵称"),
+                new MenuItem("设置/取消假人"),
+                new MenuItem("管理所有假人"),
+                new MenuItem("修改玩家下注"),
+                new MenuItem("复制玩家QQ"),
+                new MenuItem("打开玩家资料夹"),
+                new MenuItem("回滚账单"),
+                new MenuItem("重新设置机器人QQ"));
+
+
     }
 
     /**
@@ -152,22 +223,22 @@ public class BillTabPageController implements Initializable {
     @FXML
     void loginRobotButtonEvent(ActionEvent event) {
         try {
-            if (null != robotLoginController) {
-                robotLoginController.getQqPasswordTextField().setText(null);
-            }
-            if (null == robotLoginStage) {
-                robotLoginStage = simpleTools.getScoreStage(ROBOT_LOGIN_PATH, "机器人登录", 600, 400, (mainStage.getWidth()-600)/2+mainStage.getX(), (mainStage.getHeight()-400)/2+mainStage.getY());
-                robotLoginStage.initModality(Modality.APPLICATION_MODAL);
-            }
+            //第一次打开
+            Stage robotLogin = Application.ALL_STAGE.get(ROBOT_LOGIN);
+            if (null == robotLogin) robotLogin = simpleTools.createStage(ROBOT_LOGIN, null);
 
-            robotLoginStage.show();
+////
+//            if (null != robotLoginController) {
+//                robotLoginController.getQqPasswordTextField().setText(null);
+//            }
+            robotLogin.initModality(Modality.APPLICATION_MODAL);
+            robotLogin.show();
 
             if (null == robotLoginController) {
                 robotLoginController = (RobotLoginController) controllers.get(RobotLoginController.class.getName());
             }
-            robotLoginController.setRobotLoginStage(robotLoginStage);
             Platform.runLater(robotLoginController::setQqAccountComboBoxItem);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -183,10 +254,9 @@ public class BillTabPageController implements Initializable {
         try {
             //开始游戏
             if (startButton.getText().equals("开始游戏")) {
-                //选择彩种
-                GAME_INDEX.append("AoZhou5");
-                GAME_TYPE.append("ShiShiCai");
+
                 GroupRobot.listen();
+                SettingUtils.initEventMap();
                 IS_GAME_BEGIN = true;
 
                 simpleTools.informationDialog(Alert.AlertType.NONE, "开始游戏", "成功", "点击确定关闭");
@@ -211,9 +281,11 @@ public class BillTabPageController implements Initializable {
      * @param event
      */
     @FXML
-    void RobotGroupComboBoxOnClicked(ActionEvent event) {
-        System.out.println("点击了");
-//        refreshRobotGroup();
+    void RobotGroupComboBoxOnClicked(MouseEvent event) {
+//        System.out.println("点击了");
+        if (null != ROBOT) {
+            refreshRobotGroup();
+        }
     }
 
     /**
@@ -223,19 +295,7 @@ public class BillTabPageController implements Initializable {
      */
     @FXML
     void scoreCheckBoxActionEvent(ActionEvent event) {
-        try {
-            if (scoreCheckBox.isSelected()) {
-                if (null == scoreManageStage) {
-                    scoreManageStage = simpleTools.getScoreStage(SCORE_MANAGE_PATH, "上下分管理", 300, 580, (mainStage.getWidth()-300)/2+mainStage.getX(), (mainStage.getHeight()-580)/2+mainStage.getY());
-                }
-                //加载
-                scoreManageStage.show();
-            } else {
-                scoreManageStage.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     /**
@@ -245,33 +305,28 @@ public class BillTabPageController implements Initializable {
      */
     @FXML
     void sendBillMenultemActionEvent(ActionEvent event) {
-        ExecutorPool.executorService.execute(() -> {
-            try {
-                if (!IS_GAME_BEGIN) {
-                    throw new ClientErrorException("游戏未启动,请先开始游戏");
-                }
-                if (null == ROBOT) {
-                    throw new ClientErrorException("您还没有登录机器人,请登录机器人");
-                }
-                //获取账单
-                httpRequest(PORT, HOST, BILL.getUri() + "/" + GAME_INDEX + "/" + NEW_OPEN_DATA.getExpect(), null, USER_TOKEN, GET,
-                        res -> {
-                            if (res.succeeded()) {
-                                HttpResult result = res.result().body();
-                                if (result.isIsok()) {
-                                    sendMessage(result.getData().toString(), false);
-                                } else {
-                                    throw new ClientErrorException(result.getMessage());
-                                }
-                            } else {
-                                throw new ClientErrorException("服务器异常,请稍后再试");
-                            }
-                        });
-            } catch (Exception e) {
-                Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR, "发送账单", "失败", e.getMessage()));
+        try {
+            if (!IS_GAME_BEGIN) {
+                throw new ClientErrorException("游戏未启动,请先开始游戏");
             }
+            if (null == ROBOT) {
+                throw new ClientErrorException("您还没有登录机器人,请登录机器人");
+            }
+            SendBill.deal(new SendBillOption(OpenData.NEW_OPEN_DATA.getExpect(),PLAYING_GAME.getIndex())).addListener(new SendBillFutureListener() {
+                @Override
+                public void onSuccess(String s) {
+                    sendMessage(s, false);
+                }
 
-        });
+                @Override
+                public void onFailure(int errorCode) {
+                    Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR, "账号登录", "失败", "错误码:" + errorCode + "\n" + "错误信息:" + ErrorCodeUtil.getMsgByErroCode(errorCode)));
+                }
+            });
+
+        } catch (Exception e) {
+            Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR, "发送账单", "失败", e.getMessage()));
+        }
     }
 
     /**
@@ -329,7 +384,7 @@ public class BillTabPageController implements Initializable {
                 }
                 //封盘
 
-                groupHandler.betVerify(title);
+                groupHandler.betVerify();
                 manualOperation.setText("手动开盘");
                 manualOperation.setStyle("-fx-background-color: #54FF9F");
                 inCloseShow();
@@ -338,7 +393,6 @@ public class BillTabPageController implements Initializable {
                 //开盘
                 groupHandler.betOpen("手动封盘");
                 manualOperation.setText("手动封盘");
-                manualOperation.setStyle("-fx-background-color: #FF3030");
                 //刷新数据
                 refreshOpenData(NEW_OPEN_DATA);
                 closeStatus = false;
@@ -358,9 +412,11 @@ public class BillTabPageController implements Initializable {
     void scoreHistoryButtonActionEvent(ActionEvent event) {
         try {
             if (null == scoreHistoryStage) {
-                scoreHistoryStage = simpleTools.getScoreStage(SCORE_HISTORY_PATH, "上下分详细历史", 719, 674, (mainStage.getWidth()-719)/2+mainStage.getX(), (mainStage.getHeight()-674)/2+mainStage.getY());
+//                scoreHistoryStage = simpleTools.createStage(SCORE_HISTORY_PATH, "上下分详细历史", 719, 674, (mainStage.getWidth()-719)/2+mainStage.getX(), (mainStage.getHeight()-674)/2+mainStage.getY());
             }
             scoreHistoryStage.show();
+            if (null == scoreHistoryController) scoreHistoryController = (ScoreHistoryController) controllers.get(ScoreHistoryController.class.getName());
+//            scoreHistoryController.getUpperAndLowerData(null);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -374,9 +430,10 @@ public class BillTabPageController implements Initializable {
     void manualOpenButtonActionEvent(ActionEvent event) {
         try {
             if (null == manualOpenStage) {
-                manualOpenStage = simpleTools.getScoreStage(MANUAL_OPEN_PATH, "手动开奖", 320, 456, (mainStage.getWidth()-320)/2+mainStage.getX(), (mainStage.getHeight()-456)/2+mainStage.getY());
+//                manualOpenStage = simpleTools.createStage(MANUAL_OPEN_PATH, "手动开奖", 320, 456, (mainStage.getWidth()-320)/2+mainStage.getX(), (mainStage.getHeight()-456)/2+mainStage.getY());
             }
             manualOpenStage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -390,7 +447,7 @@ public class BillTabPageController implements Initializable {
     void findOrAddPlayerButtonActionEvent(ActionEvent event) {
         try {
             if (null == findOrAddPlayerStage) {
-                findOrAddPlayerStage = simpleTools.getScoreStage(FIND_AND_PLAYER_PATH, "查找或添加玩家", 295, 375, (mainStage.getWidth()-295)/2+mainStage.getX(), (mainStage.getHeight()-375)/2+mainStage.getY());
+//                findOrAddPlayerStage = simpleTools.createStage(FIND_AND_PLAYER_PATH, "查找或添加玩家", 295, 375, (mainStage.getWidth()-295)/2+mainStage.getX(), (mainStage.getHeight()-375)/2+mainStage.getY());
             }
             findOrAddPlayerStage.show();
         } catch (Exception e) {
@@ -398,6 +455,40 @@ public class BillTabPageController implements Initializable {
         }
     }
 
+
+    /**
+     * 监听"清空零分玩家"按钮事件
+     * @param event
+     */
+    @FXML
+    void clearZeroUserActionEvent(ActionEvent event) {
+
+    }
+
+    /**
+     * 监听"续费/查看授权"按钮事件
+     * @param event
+     */
+    @FXML
+    void accountButtonActionEvent(ActionEvent event) {
+        try {
+            if (null == accountStage) {
+//                accountStage = simpleTools.createStage(ACCOUNT_PATH, "续费/查看授权", 450, 358, (mainStage.getWidth()-450)/2+mainStage.getX(), (mainStage.getHeight()-358)/2+mainStage.getY());
+                accountStage.initStyle(StageStyle.TRANSPARENT);
+                accountStage.setResizable(true);
+            }
+            accountStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    /**
+     * 设置登录的机器人
+     */
     public void setLoginRobot() {
         if (null == ROBOT) return;
         robotAccountLabel.setText(String.valueOf(ROBOT.getId()));
@@ -444,6 +535,9 @@ public class BillTabPageController implements Initializable {
         closeBetLabel.setManaged(true);
     }
 
+    /**
+     * 封盘中显示
+     */
     public void inCloseShow() {
         countDownHBox.setVisible(false);
         countDownHBox.setManaged(false);
@@ -467,9 +561,9 @@ public class BillTabPageController implements Initializable {
      * 开启倒计时
      */
     private void timelabel() {
-        CountDownTask task = new CountDownTask();
-        ExecutorPool.executorService.execute(task);
-        task.valueProperty().addListener((observable, oldValue, newValue) -> {
+        countDownTask = new CountDownTask();
+        ExecutorPool.executorService.execute(countDownTask);
+        countDownTask.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (closeStatus) {
                 return;
             }
@@ -480,7 +574,7 @@ public class BillTabPageController implements Initializable {
             }
         });
 
-        task.messageProperty().addListener((observable, oldValue, newValue) -> {
+        countDownTask.messageProperty().addListener((observable, oldValue, newValue) -> {
             if (closeStatus) {
                 return;
             }
@@ -492,7 +586,4 @@ public class BillTabPageController implements Initializable {
         });
     }
 
-    public void setMainStage(Stage stage) {
-        this.mainStage = stage;
-    }
 }

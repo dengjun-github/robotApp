@@ -8,6 +8,8 @@ public class AllFxmlPath {
 
     public static final String REGISTER_PATH = "../../fxml/Register.fxml";
 
+    public static final String FIND_PASSWOLD = "../../fxml/FindPassword.fxml";
+
     public static final String INDEX_PATH = "../../fxml/Index.fxml";
 
     public static final String SCORE_MANAGE_PATH = "../../fxml/ScoreManage.fxml";
@@ -16,10 +18,13 @@ public class AllFxmlPath {
 
     public static final String SCORE_HISTORY_PATH = "../../fxml/ScoreHistory.fxml";
 
-    public static final String MANUAL_VERIFY_PATH = "../../fxml/ManualVerify.fxml";
 
     public static final String MANUAL_OPEN_PATH = "../../fxml/ManualOpen.fxml";
 
     public static final String FIND_AND_PLAYER_PATH = "../../fxml/FindOrAddPlayer.fxml";
+
+    public static final String ACCOUNT_PATH = "../../fxml/Account.fxml";
+
+    public static final String RENEW_PATH = "../../fxml/Renew.fxml";
 
 }

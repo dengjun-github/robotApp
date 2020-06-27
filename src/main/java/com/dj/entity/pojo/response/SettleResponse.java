@@ -12,6 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SettleResponse {
-    private String msg;
+    private List<String> msg;
     private List<Player> players;
 }

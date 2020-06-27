@@ -3,6 +3,7 @@ package com.dj.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -12,6 +13,10 @@ import java.util.ResourceBundle;
 public class IndexController implements Initializable {
 
 
+    @FXML
+    private TabPane indexTabPane;
+    @FXML
+    private Tab oddTab;
     @FXML
     private Tab billTab;
 
@@ -23,7 +28,6 @@ public class IndexController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     public void setMainStage(Stage stage) {

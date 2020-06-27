@@ -1,617 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.dj.controller.OddTabPageController"
-            minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.OddTabPageController">
     <children>
         <AnchorPane layoutX="498.0" layoutY="658.0" prefHeight="266.0" prefWidth="767.0">
             <children>
-                <TabPane layoutX="118.0" layoutY="33.0" prefHeight="266.0" prefWidth="767.0"
-                         style="-fx-border-style: dashed" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0"
-                         tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0" AnchorPane.bottomAnchor="0.0"
-                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <tabs>
-                        <Tab text="其他规则设置">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <AnchorPane prefHeight="120.0" prefWidth="371.0">
-                                            <children>
-                                                <GridPane alignment="CENTER" layoutX="40.0" layoutY="-30.0"
-                                                          prefHeight="120.0" prefWidth="371.0"
-                                                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES"
-                                                                           minWidth="10.0" prefWidth="100.0"/>
-                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES"
-                                                                           minWidth="10.0" prefWidth="100.0"/>
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
-                                                                        vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
-                                                                        vgrow="SOMETIMES"/>
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="开启22为和">
-                                                            <GridPane.margin>
-                                                                <Insets left="20.0"/>
-                                                            </GridPane.margin>
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <CheckBox mnemonicParsing="false" text="开启22为小也为和"
-                                                                  GridPane.columnIndex="1">
-                                                            <GridPane.margin>
-                                                                <Insets left="20.0"/>
-                                                            </GridPane.margin>
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <CheckBox mnemonicParsing="false" text="开启23为和"
-                                                                  GridPane.rowIndex="1">
-                                                            <GridPane.margin>
-                                                                <Insets left="20.0"/>
-                                                            </GridPane.margin>
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <CheckBox mnemonicParsing="false" text="开启23为大也为和"
-                                                                  GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                            <GridPane.margin>
-                                                                <Insets left="20.0"/>
-                                                            </GridPane.margin>
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                    </children>
-                                                </GridPane>
-                                            </children>
-                                        </AnchorPane>
-                                        <AnchorPane layoutY="121.0" prefHeight="124.0" prefWidth="368.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="368.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="开启龙虎返本金：">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="20.0"/>
-                                                            </HBox.margin>
-                                                        </CheckBox>
-                                                        <TextField prefHeight="31.0" prefWidth="65.0">
-                                                            <HBox.margin>
-                                                                <Insets left="25.0"/>
-                                                            </HBox.margin>
-                                                        </TextField>
-                                                        <Label text="\%">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER" layoutY="62.0" prefHeight="60.0"
-                                                      prefWidth="368.0" spacing="85.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="890不算顺子">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <CheckBox mnemonicParsing="false" text="901不算顺子">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                    </children>
-                                                </HBox>
-                                            </children>
-                                        </AnchorPane>
-                                        <Separator layoutY="111.0" prefHeight="20.0" prefWidth="369.0"/>
-                                        <Separator layoutX="364.0" layoutY="-2.0" orientation="VERTICAL"
-                                                   prefHeight="241.0" prefWidth="12.0"/>
-                                        <VBox layoutX="370.0" prefHeight="121.0" prefWidth="389.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="开合，组合大小单双返还">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="\%本金">
-                                                            <font>
-                                                                <Font size="18.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="单局盈利金额超过">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="抽水">
-                                                            <font>
-                                                                <Font size="18.0"/>
-                                                            </font>
-                                                        </Label>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="\%">
-                                                            <font>
-                                                                <Font size="18.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="389.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="开合，总和大小单双，定位大小单双返还">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="\%">
-                                                            <font>
-                                                                <Font size="18.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                            </children>
-                                        </VBox>
-                                        <Separator layoutX="368.0" layoutY="119.0" prefHeight="4.0" prefWidth="383.0"/>
-                                        <VBox layoutX="369.0" layoutY="122.0" prefHeight="109.0" prefWidth="388.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                    <children>
-                                                        <Label text="单个用户每期下注上限：">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </Label>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="允许取消下注">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                    <children>
-                                                        <CheckBox mnemonicParsing="false" text="封盘前">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </CheckBox>
-                                                        <TextField alignment="CENTER" prefHeight="23.0" prefWidth="65.0"
-                                                                   text="50">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="秒，不允许取消下注">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="其他下注限制">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <Separator layoutX="239.0" layoutY="-2.0" orientation="VERTICAL"
-                                                   prefHeight="200.0"/>
-                                        <AnchorPane prefHeight="226.0" prefWidth="246.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" layoutY="43.0" prefHeight="90.0"
-                                                      prefWidth="246.0">
-                                                    <children>
-                                                        <Label text="二连">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="10.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="31.0" prefWidth="67.0" text="50000">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="三连">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="30.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="31.0" prefWidth="67.0" text="50000">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" layoutY="133.0" prefHeight="90.0"
-                                                      prefWidth="246.0">
-                                                    <children>
-                                                        <Label text="四连">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="10.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="31.0" prefWidth="67.0" text="50000">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                        <Label text="五连">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="30.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="31.0" prefWidth="67.0" text="50000">
-                                                            <font>
-                                                                <Font size="15.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                    </children>
-                                                </HBox>
-                                                <Label layoutX="14.0" layoutY="14.0" text="连码单独限额">
-                                                    <font>
-                                                        <Font size="16.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </AnchorPane>
-                                        <AnchorPane layoutX="246.0" prefHeight="230.0" prefWidth="512.0">
-                                            <children>
-                                                <VBox layoutX="102.0" layoutY="14.0" prefHeight="230.0"
-                                                      prefWidth="512.0" AnchorPane.bottomAnchor="0.0"
-                                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                                      AnchorPane.topAnchor="0.0">
-                                                    <children>
-                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0"
-                                                              prefWidth="200.0">
-                                                            <children>
-                                                                <Label text="单注最大下注数目">
-                                                                    <font>
-                                                                        <Font size="16.0"/>
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField prefHeight="31.0" prefWidth="67.0"
-                                                                           text="50000">
-                                                                    <font>
-                                                                        <Font size="15.0"/>
-                                                                    </font>
-                                                                </TextField>
-                                                                <Label text="和值(特码)最大下注数目">
-                                                                    <font>
-                                                                        <Font size="16.0"/>
-                                                                    </font>
-                                                                    <HBox.margin>
-                                                                        <Insets left="30.0"/>
-                                                                    </HBox.margin>
-                                                                </Label>
-                                                                <TextField prefHeight="31.0" prefWidth="67.0"
-                                                                           text="50000">
-                                                                    <font>
-                                                                        <Font size="15.0"/>
-                                                                    </font>
-                                                                </TextField>
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0"
-                                                              prefWidth="200.0">
-                                                            <children>
-                                                                <Label text="定位最大下注数目">
-                                                                    <font>
-                                                                        <Font size="16.0"/>
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField prefHeight="31.0" prefWidth="67.0"
-                                                                           text="50000">
-                                                                    <font>
-                                                                        <Font size="15.0"/>
-                                                                    </font>
-                                                                </TextField>
-                                                                <Label text="下注消息最大解析长度">
-                                                                    <font>
-                                                                        <Font size="16.0"/>
-                                                                    </font>
-                                                                    <HBox.margin>
-                                                                        <Insets left="30.0"/>
-                                                                    </HBox.margin>
-                                                                </Label>
-                                                                <TextField prefHeight="31.0" prefWidth="67.0"
-                                                                           text="50000">
-                                                                    <font>
-                                                                        <Font size="15.0"/>
-                                                                    </font>
-                                                                </TextField>
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0"
-                                                              prefWidth="200.0">
-                                                            <children>
-                                                                <CheckBox mnemonicParsing="false" text="开启余额梭哈">
-                                                                    <font>
-                                                                        <Font size="18.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                            </children>
-                                                        </HBox>
-                                                    </children>
-                                                </VBox>
-                                            </children>
-                                        </AnchorPane>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="22/23设置">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <GridPane layoutX="70.0" layoutY="24.0" prefHeight="227.0" prefWidth="765.0"
-                                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.0" minWidth="10.0"
-                                                                   prefWidth="490.0"/>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0"
-                                                                   prefWidth="275.0"/>
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                            </rowConstraints>
-                                            <children>
-                                                <CheckBox mnemonicParsing="false" text="开22时，定位小、双，总和小、双，二组合小双返还本金">
-                                                    <font>
-                                                        <Font size="18.0"/>
-                                                    </font>
-                                                </CheckBox>
-                                                <CheckBox mnemonicParsing="false" text="开23时，定位大、单，总和大、单，二组合大单返还本金"
-                                                          GridPane.rowIndex="1">
-                                                    <font>
-                                                        <Font size="18.0"/>
-                                                    </font>
-                                                </CheckBox>
-                                                <CheckBox mnemonicParsing="false" text="开22杀所有玩法"
-                                                          GridPane.columnIndex="1">
-                                                    <font>
-                                                        <Font size="18.0"/>
-                                                    </font>
-                                                    <GridPane.margin>
-                                                        <Insets left="40.0"/>
-                                                    </GridPane.margin>
-                                                </CheckBox>
-                                                <CheckBox mnemonicParsing="false" text="开23杀所有玩法"
-                                                          GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                    <font>
-                                                        <Font size="18.0"/>
-                                                    </font>
-                                                    <GridPane.margin>
-                                                        <Insets left="40.0"/>
-                                                    </GridPane.margin>
-                                                </CheckBox>
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="极大/极小设置">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox layoutX="298.0" layoutY="27.0" prefHeight="227.0" prefWidth="765.0"
-                                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="143.0" prefWidth="765.0"
-                                                      spacing="20.0">
-                                                    <children>
-                                                        <Label text="极小数字小于等于">
-                                                            <font>
-                                                                <Font size="20.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="20.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="32.0" prefWidth="90.0">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="143.0" prefWidth="765.0"
-                                                      spacing="20.0">
-                                                    <children>
-                                                        <Label text="极大数字大于等于">
-                                                            <font>
-                                                                <Font size="20.0"/>
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="20.0"/>
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <TextField prefHeight="32.0" prefWidth="86.0">
-                                                            <font>
-                                                                <Font size="16.0"/>
-                                                            </font>
-                                                        </TextField>
-                                                    </children>
-                                                </HBox>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                    </tabs>
-                </TabPane>
+                <fx:include source="OddSettingTabPanePage.fxml" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="656.0" prefWidth="1263.0">
             <children>
-                <TableView id="oddsTable" layoutX="110.0" layoutY="105.0" prefHeight="656.0" prefWidth="1250.0"
-                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="13.0"
-                           AnchorPane.topAnchor="0.0">
+                <TableView id="oddsTable" fx:id="oddTable" layoutX="110.0" layoutY="105.0" prefHeight="656.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                        <TableColumn prefWidth="210.0" text="玩法名称"/>
-                        <TableColumn maxWidth="407.0" prefWidth="355.0" text="识别关键字"/>
-                        <TableColumn prefWidth="199.0" text="赔率设置"/>
-                        <TableColumn prefWidth="75.0" text="22赔率"/>
-                        <TableColumn prefWidth="66.0" text="23赔率"/>
-                        <TableColumn prefWidth="111.0" text="最小限额"/>
-                        <TableColumn prefWidth="102.0" text="最大限额"/>
-                        <TableColumn prefWidth="139.0" text="单局总限额"/>
+                        <TableColumn fx:id="gameNameColumn" editable="false" prefWidth="210.0" text="玩法名称" />
+                        <TableColumn fx:id="formatColumn" maxWidth="407.0" prefWidth="355.0" text="识别关键字" />
+                        <TableColumn fx:id="oddValueColumn" prefWidth="199.0" text="赔率设置" />
+                        <TableColumn fx:id="odd22ValueColumn" prefWidth="75.0" text="22赔率" />
+                        <TableColumn fx:id="odd23ValueColumn" prefWidth="66.0" text="23赔率" />
+                        <TableColumn fx:id="betsMinMoneyColumn" prefWidth="111.0" text="最小限额" />
+                        <TableColumn fx:id="betsMaxMoneyColumn" prefWidth="102.0" text="最大限额" />
+                        <TableColumn fx:id="betsSingleMaxMoneyColumn" prefWidth="139.0" text="单局总限额" />
                     </columns>
                 </TableView>
             </children>
         </AnchorPane>
         <AnchorPane layoutY="657.0" prefHeight="268.0" prefWidth="489.0">
             <children>
-                <GridPane layoutX="87.0" layoutY="89.0" prefHeight="268.0" prefWidth="365.0"
-                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                          AnchorPane.topAnchor="0.0">
+                <GridPane layoutX="87.0" layoutY="89.0" prefHeight="268.0" prefWidth="365.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label prefHeight="20.0" prefWidth="109.0" text="上分关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="121.0"/>
+                                <TextField fx:id="upperFormatTextField" prefHeight="32.0" prefWidth="121.0" />
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
-                              GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <children>
                                 <Label prefHeight="20.0" prefWidth="134.0" text="取消下注关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="121.0"/>
+                                <TextField fx:id="cacleBetFormatTextField" prefHeight="32.0" prefWidth="121.0" />
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
-                              GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
                                 <Label prefHeight="20.0" prefWidth="130.0" text="查流水关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="121.0"/>
+                                <TextField fx:id="queryWaterFormatTextField" prefHeight="32.0" prefWidth="121.0" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
                                 <Label prefHeight="20.0" prefWidth="133.0" text="下分关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="121.0"/>
+                                <TextField fx:id="lowerFormatTextField" prefHeight="32.0" prefWidth="121.0" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                             <children>
                                 <Label text="查历史关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="115.0"/>
+                                <TextField fx:id="queryHistoryFormatTextField" prefHeight="32.0" prefWidth="115.0" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                             <children>
                                 <Label prefHeight="20.0" prefWidth="111.0" text="查分关键字：">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <TextField prefHeight="32.0" prefWidth="116.0"/>
+                                <TextField fx:id="queryScoreFormatTextField" prefHeight="32.0" prefWidth="116.0" />
                             </children>
                         </HBox>
                     </children>

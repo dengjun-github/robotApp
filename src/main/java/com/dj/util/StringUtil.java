@@ -27,4 +27,20 @@ public class StringUtil extends StringUtils {
         return result;
     }
 
+    /**
+     * 判断字符串是否有重复字符
+     * @param s
+     * @return
+     */
+    public static boolean isunique(String s) {
+        int index1,index2;
+        char[] chars = s.toCharArray();
+        for(char c:chars) {
+            index1 = s.indexOf(c);
+            index2 = s.lastIndexOf(c);
+            if(index1 != index2) return false;
+        }
+        return true;
+    }
+
 }

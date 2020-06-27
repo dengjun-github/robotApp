@@ -5,7 +5,6 @@ import javafx.concurrent.Task;
 
 public class RobotLoginTask extends Task<RobotInfoByBot> {
 
-
     @Override
     protected RobotInfoByBot call() throws Exception {
         return null;

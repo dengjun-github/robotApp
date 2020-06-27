@@ -1,109 +1,111 @@
 package com.dj.util;
 
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class BetUtil {
 
-//	public static List<BetsTypeBo> getBo(String key , List<BetsType>betsTypes) throws ClientErrorException {
-//
-//		List<BetsTypeBo> collect = null;
-//		try {
-//			collect = contents.stream()
-//					.map(e -> betsTypes.stream()
-//							.map(be -> setBo(key, e))
-//							.findAny().get())
-//					.collect(Collectors.toList());
-//
-//		} catch (Exception e) {
-//			throw new ClientErrorException("下注格式错误!");
-//		}
-//		return collect;
-//	}
-//
-//
-//
-//
-////	// 解析
-////	private static String getKey4Content(String content){
-////		final StringBuilder key = new StringBuilder();
-////		ActionRegex.BET.getRegexMap()
-////				.forEach((k,regexes) -> {
-////					regexes.stream()
-////							.map(Pattern::compile)
-////							.map(pattern -> pattern.matcher(content))
-////							.map(Matcher::matches)
-////							.forEach(aBoolean -> {
-////								if (aBoolean){
-//////									System.out.println("======================key = " +k);
-////									key.append(k);
-////									return;
-////								}
-////
-////							});
-////		});
-////		return  key.toString();
-////	}
-//
-//	public static BetsTypeBo setBo() {
-//		return BetsTypeBo.builder()
-//				.money(getMoney(action,content))
-//				.content(content)
-//				.key(action.getKey())
-//				.build();
-//	}
-//
-//	private static Integer getMoney(GlobalConstant.Action action,String content) {
-//		switch (action) {
-//
-//		}
-//	}
+    public static int JI_DA_NUMBER = 0;
+
+    public static int JI_XIAO_NUMBER = 0;
+
+    //利用正则匹配.提取字符串中的汉字
+    public static String getChinese(String str) {
+        String regEx = "[\\u4e00-\\u9fa5]*";
+        Pattern p = Pattern.compile(regEx);
 
 
-	//利用正则匹配.提取字符串中的汉字
-	public static String getChinese(String str){
-		String regEx = "[^0-9]";
-		Pattern p = Pattern.compile(regEx);
-		Matcher m = p.matcher(str);
-		return m.replaceAll("").trim();
+        Matcher matcher = p.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            sb.append(matcher.group());
+        }
+        return sb.toString();
+    }
 
-	}
+    //利用正则匹配,提取字符串中的数字
+    public static int getNumber(String str) {
+        String regEx = "[\\u4e00-\\u9fa5]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        String trim = m.replaceAll("").trim();
+        if (!trim.equals("")) return Integer.parseInt(trim);
+        return 0;
+    }
 
-	//利用正则匹配,提取字符串中的数字
-	public static int getNumber(String str){
-		String regEx = "[\\u4e00-\\u9fa5]";
-		Pattern p = Pattern.compile(regEx);
-		Matcher m = p.matcher(str);
-		String trim = m.replaceAll("").trim();
-		if (!trim.equals("")) return Integer.parseInt(trim);
-		return 0;
-	}
+    /**
+     * 给和值,定位大小单双计算下注金额
+     *
+     * @return
+     */
+    public static int getMoney4DingWeiDaXiao(String msg) {
+        return Integer.parseInt(StringUtils.substringBefore(msg, getChinese(msg)));
+    }
+
+    /**
+     * 给单码计算下注的号码
+     *
+     * @return
+     */
+    public static String getCode4DanMa(String msg) {
+        return msg.substring(0, msg.indexOf(msg.indexOf(getChinese(msg))));
+    }
 
 
-	
-	/**
-	 * 针对连码和定位球求总点的方法
-	 * @param str
-	 * @return
-	 */
-	public static Integer getCount(String str) {
-		String[] arr = str.split("/");//按照"/"拆分
-		if(arr.length == 3) {
-			//定位球
-			return arr[0].toCharArray().length*arr[1].toCharArray().length;
-		}
-		return 1;
-	}
-	
-	//判断字符串是不是以数字开头
-	public static boolean isStartWithNumber(String str) {
-	   Pattern pattern = Pattern.compile("[0-9]*");
-	   Matcher isNum = pattern.matcher(str.charAt(0)+"");
-	   if (!isNum.matches()) {
-	       return false;
-	   }
-	   return true;
-	}
+    //判断字符串是不是以数字开头
+    public static boolean isStartWithNumber(String str) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str.charAt(0) + "");
+        if (!isNum.matches()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 给和值计算下注号码
+     *
+     * @return
+     */
+    public static int getNumber4Hezhi(String content) {
+        if (content.contains("/"))
+            return Integer.parseInt(StringUtils.substringAfter(content, getChinese(content)).split("/")[0]);
+
+        else if (content.contains("."))
+            return Integer.parseInt(StringUtils.substringAfter(content, getChinese(content)).split(".")[0]);
+
+        else return Integer.parseInt(content.split(BetUtil.getChinese(content))[0]);
+
+    }
+
+
+    //解析定位龙虎合的位置
+    public static List<Integer> findLocal4DingWeiLongHuHe(String content) {
+        List<String> list = Arrays.asList("个", "十", "百", "千", "万");
+        List<Integer> betLocal = new ArrayList<>();
+        //万千虎100
+        betLocal.add(list.indexOf(StringUtils.substring(content, 0,1)));
+        betLocal.add(list.indexOf(StringUtils.substring(content, 1,2)));
+        return betLocal;
+    }
+
+
+    public static void main(String[] args) {
+        String msg = "和值28/18";
+        int str2 = getNumber4Hezhi(msg);
+//        String chinese = getChinese(msg);
+//        System.out.println(chinese);
+//        int i = msg.indexOf(chinese);
+//        System.out.println(i);
+//        String str1 = msg.substring(0, msg.indexOf(chinese));
+//        String str2 = msg.substring(str1.length() + 1);
+        System.out.println(str2);
+    }
 }

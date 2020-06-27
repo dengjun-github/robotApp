@@ -1,10 +1,14 @@
 package com.dj.entity.pojo.request.player;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Score {
 
     private Integer money;
@@ -13,9 +17,4 @@ public class Score {
 
     private PlayerBo player;
 
-    public Score(Integer money, boolean is_upper, PlayerBo playerBo) {
-        this.money = money;
-        this.is_upper = is_upper;
-        this.player = playerBo;
-    }
 }

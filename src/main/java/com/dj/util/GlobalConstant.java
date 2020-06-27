@@ -1,35 +1,22 @@
 package com.dj.util;
 
 import com.dj.Exception.ClientErrorException;
-import com.dj.entity.pojo.response.Root;
-import com.dj.entity.vo.ImageVo;
+import javafx.stage.StageStyle;
 import lombok.Getter;
+import serialize.pojo.Keys;
+
+import java.io.File;
 
 public class GlobalConstant {
 
-    //服务器端口
-    public static final Integer PORT = 8080;
-
-    //服务器主机
-    public static final String HOST = "192.168.1.107";
-
-    //用户token
-    public static String USER_TOKEN = "";
-
-    //用户配置
-    public static Root USER_ROOT = new Root();
-
-    //玩家玩的是哪个彩种
-    public static StringBuilder GAME_INDEX = new StringBuilder();
-    //
-    public static StringBuilder GAME_TYPE = new StringBuilder();
+    public static Keys.Game PLAYING_GAME = null;
 
     //是否可以下注
     public static boolean CAN_BET = true;
 
     public static boolean closeStatus = false;
 
-
+    public static String IMAGE_URL = "http://192.168.1.107:9999/";
 
     //图片地址
     public static String IMAGE_PATH = "D:\\bot\\";
@@ -37,21 +24,50 @@ public class GlobalConstant {
     //是否开启游戏
     public static boolean IS_GAME_BEGIN = false;
 
+    public static final File SYS_ICON = new File("src/main/resources/images/sys.png");
+
     //是否已经开奖
     public static boolean IS_OPEN = false;
 
-    //图片
-    public static final ImageVo imageVo = new ImageVo();
+
 
     public enum Action{
         UPPER_SCORE("UpperScoreInstruct"),
         LOWER_SCORE("LowerScoreInstruct"),
         QUERY_SCORE("QueryScoreInstruct"),
+        QUERY_HiSTORY("QueryHistoryInstruct"),
+        QUERY_BILL("QueryBillInstruct"),
+        RETURN_WATER("ReturnWaterInstruct"),
+        CANCEL_BET("CancelBetInstruct"),
         BETS_DA("BetsDa"),
         BETS_XIAO("BetsXiao"),
         BETS_DAN("BetsDan"),
         BETS_SHUANG("BetsShuang"),
-        BETS_DING_WEI("BetsDingWei");
+        BETS_LONG("BetsLong"),
+        BETS_HU("BetsHu"),
+        BETS_HE_OF_LONGHU("BetsHeOfLongHu"),
+        BETS_He_OF_DAXIAO("BetsHeOfDaXiao"),
+        BETS_DANMA("BetsDanMa"),
+        BETS_LIANMA("BetsLianMa"),
+        BETS_DINGWEI_CODE("BetsDingWeiOfCode"),
+        BETS_DINGWEI_DAXIAO("BetsDingweiOfDaXiao"),
+        BETS_DADAN("BetsDaDan"),
+        BETS_DASHUANG("BetsDaShuang"),
+        BETS_XIAODAN("BetsXiaoDan"),
+        BETS_XIAOSHUANG("BetsXiaoShuang"),
+        BETS_SAN_ZUHE("BetsSanZuHe"),
+        BETS_LIANG_ZUHE("BetsLiangZuHe"),
+        BETS_BAOZI("BetsBaoZi"),
+        BETS_SHUNZI("BetsShunZi"),
+        BETS_BANSHUN("BetsBanShunZi"),
+        BETS_ZALIU("BetsZaLiu"),
+        BETS_DUIZI("BetsDuiZi"),
+        BETS_HEZHI("BetsHeZhi"),
+        BETS_JIDA("BetsJiDa"),
+        BETS_JIXIAO("BetsJiXiao"),
+        BETS_DINGWEI_LONG("BetsDingWeiLong"),
+        BETS_DINGWEI_HU("BetsDingWeiHu"),
+        BETS_DINGWEI_HE("BetsDingWeiHe");
 
         @Getter
         private String key;
@@ -69,34 +85,6 @@ public class GlobalConstant {
         }
     }
 
-    /**
-     * 请求的路径
-     */
-    public enum RequstUri{
-        LOGIN("/authentication"),
-        BIND("/bind"),
-        REGISTER("/register"),
-        CONFIG("/config"),
-        PLAYER_SCORE("/player/score"),
-        PLAYER_BET("/player/order"),
-        PLAYER_BETS_CHECK("/player/bets_check"),
-        PLAYER_ORDER("/player/order"),
-        PLAYER_RESULT("/player/result"),
-        ROBOT_INFO("/robot-info"),
-        BILL("/player/bill");
-
-        @Getter
-        private String uri;
-
-        RequstUri(String uri) {
-            this.uri = uri;
-        }
-    }
-
-    public enum BotPrivence{
-        GROUP,
-        DUMMY
-    }
 
     @Getter
     public enum ImageSize{
@@ -115,4 +103,46 @@ public class GlobalConstant {
         }
     }
 
+    @Getter
+    public enum StageInfo{
+        LOGIN(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/Login.fxml",null),
+        REGISTER(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/Register.fxml",null),
+        BIND(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/Bind.fxml",null),
+        FIND_PASSWORD(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/FindPassword.fxml",null),
+        INDEX(1257.0,1032.0,StageStyle.UNIFIED,"../../fxml/Index.fxml","账单"),
+        ACCOUNT(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/FindPassword.fxml",null),
+        find_player(295.0,375.0,StageStyle.UTILITY,"../../fxml/FindOrAddPlayer.fxml","查找或添加用户"),
+        MANUAL_OPEN(320.0,456.0,StageStyle.UTILITY,"../../fxml/ManualOpen.fxml",null),
+        PERIOD_PROFIT(580.0,537.0,StageStyle.UTILITY,"../../fxml/ProfitByPeriod.fxml",null),
+        RENEW(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/Renew.fxml",null),
+        ROBOT_LOGIN(450.0,358.0,StageStyle.TRANSPARENT,"../../fxml/RobotLogin.fxml",null),
+        SCORE_HISTORY(674.0,719.0,StageStyle.UTILITY,"../../fxml/ScoreHistory.fxml","上下分详细历史"),
+        SCORE_MANAGE(450.0,358.0,StageStyle.UTILITY,"../../fxml/ScoreManage.fxml","上下分管理");
+
+        private double width;
+        private double height;
+        private StageStyle style;
+        private String fxmlPath;
+        private String title;
+
+        StageInfo(double width, double height, StageStyle style,String fxmlPath,String title) {
+            this.width = width;
+            this.height = height;
+            this.style = style;
+            this.fxmlPath = fxmlPath;
+            this.title = title;
+        }
+    }
+
+
+
+
+    /**
+     * 判断游戏是否开始
+     */
+    public static void gameIsBegan() throws ClientErrorException{
+        if (!IS_GAME_BEGIN){
+            throw new ClientErrorException("游戏未开始,请先开始游戏");
+        }
+    }
 }

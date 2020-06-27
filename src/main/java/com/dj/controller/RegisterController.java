@@ -1,113 +1,206 @@
 package com.dj.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.dj.App;
-import com.dj.entity.pojo.request.user.UserRegister;
-import com.dj.util.HttpResult;
+import api.account.Register;
+import api.future.Future;
+import api.future.RegisterFutureListener;
+import com.dj.Application;
+import com.dj.Exception.ClientErrorException;
+import com.dj.util.ErrorCodeUtil;
+import com.dj.util.GlobalConstant;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import lombok.Setter;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static com.dj.net.VertxWebClient.RestFul.POST;
-import static com.dj.net.VertxWebClient.httpRequest;
-import static com.dj.util.GlobalConstant.HOST;
-import static com.dj.util.GlobalConstant.PORT;
-import static com.dj.util.GlobalConstant.RequstUri.REGISTER;
+import static com.dj.Application.controllers;
 import static com.dj.util.SimpleTools.simpleTools;
 
 public class RegisterController implements Initializable {
+
     @FXML
     private Button returnButton;
 
     @FXML
-    private Label systemLabel;
+    private Button minimizeButton;
 
     @FXML
-    private Label userNameLabel;
+    private Button closeButton;
 
     @FXML
-    private TextField account;
+    private TextField accountTextField;
 
     @FXML
-    private Label passwordLabel;
+    private PasswordField confirmSuperPasswordTextFeild;
 
     @FXML
-    private PasswordField password;
+    private PasswordField superPasswordTextFeild;
 
     @FXML
-    private Label confirmLabel;
+    private PasswordField confirmPasswordTextFeild;
 
     @FXML
-    private PasswordField confirm;
+    private PasswordField passwordTextField;
 
     @FXML
-    private Button resetButton;
+    private Button registerButton;
 
     @FXML
-    private Button clearButton;
+    private Label accountErrorLabel;
 
-    private App application;
+    @FXML
+    private Label passwordErrorLabel;
 
+    @FXML
+    private Label confirmPasswordErrorLabel;
 
-    public void setApp(App application) {
-        this.application = application;
-    }
+    @FXML
+    private Label superPasswordErrorLabel;
+
+    @FXML
+    private Label confirmSuperPasswordErrorLabel;
+
+    @Setter
+    private Application application;
+
+    private String username;
+
+    private String password;
+
+    private String superCode;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        controllers.put(this.getClass().getName(),this);
 
+        simpleTools.setBackgrondColor(minimizeButton);
+        simpleTools.setBackgrondColor(closeButton);
+        simpleTools.setBackgrondColor(returnButton);
+        checkNull(accountTextField,accountErrorLabel,"账号不能为空","username");
+        checkNull(passwordTextField,passwordErrorLabel,"密码不能为空","");
+        checkNull(superPasswordTextFeild,superPasswordErrorLabel,"超级密码不能为空","");
+        chekeAccordance(confirmPasswordTextFeild,passwordTextField,confirmPasswordErrorLabel,"两次密码不一致","password");
+        chekeAccordance(confirmSuperPasswordTextFeild,superPasswordTextFeild,confirmSuperPasswordErrorLabel,"两次超级密码不一致","superCode");
     }
 
     /**
-     * 监听"注册"按钮事件
-     * @param actionEvent
+     * 监听"关闭"按钮事件
+     * @param event
      */
-    public void registerEvent(ActionEvent actionEvent) {
-        httpRequest(PORT, HOST,REGISTER.getUri(),(JSONObject) JSONObject.toJSON(new UserRegister(account.getText(),password.getText(),confirm.getText())),null, POST,
-                res -> {
-                    if (res.succeeded()) {
-                        HttpResult result = res.result().body();
-                        if (result.isIsok()) {
-                            //跳转到main页面
-                            Platform.runLater(() -> {
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"注册成功", new ButtonType("返回登录", ButtonBar.ButtonData.YES));
-                                alert.setHeaderText(null);
-                                Optional<ButtonType> buttonType = alert.showAndWait(); //将在对话框消失以前不会执行之后的代码
-                                if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
-                                    LoginController login = application.gotologin();
-                                    login.setUser(account.getText(),password.getText());
-                                }
-                            });
-                        } else {
-                            Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR,"注册","错误",result.getMessage()));
-                        }
-                    } else {
-                        Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR,"注册","错误","服务器异常,请检查ip再试"));
-                    }
-                });
+    @FXML
+    void closeButtonActionEvent(ActionEvent event) throws Exception {
+        Application.ALL_STAGE.get(GlobalConstant.StageInfo.REGISTER).close();
     }
 
     /**
-     * 监听"重置"按钮事件
-     * @param actionEvent
+     * 监听"最小化"按钮事件
+     * @param event
      */
-    public void clearEvent(ActionEvent actionEvent) {
-        account.setText(null);
-        password.setText(null);
-        confirm.setText(null);
+    @FXML
+    void minimizeButtonActionEvent(ActionEvent event) {
+        Application.ALL_STAGE.get(GlobalConstant.StageInfo.REGISTER).setIconified(true);
     }
 
     /**
      * 监听"返回"按钮事件
-     * @param actionEvent
+     * @param event
      */
-    public void returnEvent(ActionEvent actionEvent) {
-        application.gotologin();
+    @FXML
+    void returnButtonActionEvent(ActionEvent event) {
+        Application.ALL_STAGE.get(GlobalConstant.StageInfo.LOGIN).show();
+        Application.ALL_STAGE.get(GlobalConstant.StageInfo.REGISTER).close();
     }
+
+    /**
+     * 监听"注册"按钮事件
+     * @param event
+     */
+    @FXML
+    void registerButtonActionEvent(ActionEvent event) {
+        try {
+            if (simpleTools.isEmpty(username)) {
+               throw new ClientErrorException("账号不能为空");
+            }
+            if (simpleTools.isEmpty(password)) {
+               throw new ClientErrorException("密码不能为空");
+            }
+            if (simpleTools.isEmpty(superCode)) {
+               throw new ClientErrorException("超级密码不能为空");
+            }
+
+
+            Future register = Register.register(username, password, superCode);
+            register.addListener(new RegisterFutureListener() {
+                @Override
+                public void onSuccess(String s) {
+                    Platform.runLater(() -> {
+
+                        boolean dialog = simpleTools.informationDialog(Alert.AlertType.INFORMATION, "账号注册", "成功", "注册成功,是否进行充值?\n点击确定进行绑卡充值,点击取消返回登录");
+
+                        if (dialog) {
+                            Application.ALL_STAGE.get(GlobalConstant.StageInfo.BIND).show();
+                        }else {
+                            Application.ALL_STAGE.get(GlobalConstant.StageInfo.LOGIN).show();
+                        }
+                        Application.ALL_STAGE.get(GlobalConstant.StageInfo.REGISTER).close();
+                    });
+                }
+                @Override
+                public void onFailure(int errorCode) {
+                    Platform.runLater(() -> simpleTools.informationDialog(Alert.AlertType.ERROR,"账号注册","失败","错误码:"+errorCode +"\n错误信息:"+ ErrorCodeUtil.getMsgByErroCode(errorCode)));
+                }
+            });
+        } catch (Exception e) {
+            simpleTools.informationDialog(Alert.AlertType.ERROR,"账号注册","失败",e.getMessage());
+        }
+    }
+
+
+    /**
+     * 非空检查
+     * @param text
+     * @param errorLabel
+     * @param msg
+     * @param param
+     */
+    private void checkNull(TextInputControl text,Label errorLabel, String msg, String param) {
+        text.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (oldValue && !newValue) {
+                if (null != text.getText() && !text.getText().equals("")) {
+                    if (param.equals("username")) username = text.getText();
+                    errorLabel.setText(null);
+                } else {
+                    errorLabel.setText(msg);
+                }
+            }
+        });
+    }
+
+    /**
+     * 密码是否一致检查
+     * @param field
+     * @param compare
+     * @param errorLabel
+     * @param msg
+     * @param param
+     */
+    public void chekeAccordance(PasswordField field,PasswordField compare,Label errorLabel, String msg, String param){
+        field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (oldValue && !newValue) {
+                if (null != field.getText() && !field.getText().equals("") && null != compare.getText() && !compare.getText().equals("") && compare.getText().equals(field.getText())) {
+                    if (param.equals("password")) password = field.getText();
+                    if (param.equals("superCode")) superCode = field.getText();
+                    errorLabel.setText(null);
+                } else {
+                    errorLabel.setText(msg);
+                }
+            }
+        });
+    }
+
 }

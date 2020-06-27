@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.browniebytes.javafx.control.DateTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.WelfareSettingController">
+    <children>
+        <AnchorPane prefHeight="927.0" prefWidth="1265.0">
+            <children>
+                <TabPane layoutX="115.0" layoutY="157.0" prefHeight="927.0" prefWidth="1265.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" tabMinWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                        <Tab text="首充福利设置">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <CheckBox layoutX="36.0" layoutY="22.0" mnemonicParsing="false" text="开启首充福利">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </CheckBox>
+                                        <AnchorPane layoutX="188.0" layoutY="50.0" prefHeight="260.0" prefWidth="725.0" style="-fx-background-color: #FFFAFA;">
+                                            <children>
+                                                <HBox alignment="CENTER" layoutY="27.0" prefHeight="47.0" prefWidth="521.0" spacing="20.0">
+                                                    <children>
+                                                        <RadioButton mnemonicParsing="false" text="新人首充充值赠送">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </RadioButton>
+                                                        <RadioButton mnemonicParsing="false" text="每月首充充值赠送">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </RadioButton>
+                                                        <RadioButton mnemonicParsing="false" text="每天首充充值赠送">
+                                                            <font>
+                                                                <Font size="16.0" />
+                                                            </font>
+                                                        </RadioButton>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" layoutY="83.0" prefHeight="177.0" prefWidth="651.0">
+                                                    <children>
+                                                        <CheckBox mnemonicParsing="false" text="如果没有到达设置的标准则不予许下分，且回复 ：">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </CheckBox>
+                                                        <TextArea prefHeight="177.0" prefWidth="196.0" text="[IR:at=QQ] &#10;流水或期数未达到管理员设置的要求，如执意下分请联系本群管理员。" wrapText="true">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </TextArea>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane layoutX="3.0" layoutY="325.0" prefHeight="562.0" prefWidth="1265.0">
+                                            <children>
+                                    <TableView layoutX="669.0" prefHeight="507.0" prefWidth="596.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="669.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+                                        <TableColumn prefWidth="143.0" text="充值金额" />
+                                        <TableColumn prefWidth="122.0" text="赠送比例" />
+                                          <TableColumn prefWidth="154.0" text="流水倍率" />
+                                          <TableColumn prefWidth="172.0" text="下注期数" />
+                                      </columns>
+                                    </TableView>
+                                                  <HBox alignment="CENTER" layoutY="513.0" prefHeight="49.0" prefWidth="1259.0" style="-fx-border-color: red;">
+                                                      <children>
+                                                          <Label text="注：充值达到">
+                                                              <font>
+                                                                  <Font size="20.0" />
+                                                              </font>
+                                                          </Label>
+                                                          <TextField editable="false" prefHeight="32.0" prefWidth="87.0" text="充值金额">
+                                                              <font>
+                                                                  <Font size="16.0" />
+                                                              </font>
+                                                          </TextField>
+                                                          <Label text="以上赠送充值金额的">
+                                                              <font>
+                                                                  <Font size="20.0" />
+                                                              </font>
+                                                          </Label>
+                                                          <TextField editable="false" prefHeight="32.0" prefWidth="94.0" text="赠送比例">
+                                                              <font>
+                                                                  <Font size="16.0" />
+                                                              </font>
+                                                          </TextField>
+                                                          <Label text="\%,且流水达到充值金额的">
+                                                              <font>
+                                                                  <Font size="20.0" />
+                                                              </font>
+                                                          </Label>
+                                                          <TextField editable="false" prefHeight="32.0" prefWidth="83.0" text="流水倍率">
+                                                              <font>
+                                                                  <Font size="16.0" />
+                                                              </font>
+                                                          </TextField>
+                                                          <Label text="倍，且下注期数达到">
+                                                              <font>
+                                                                  <Font size="20.0" />
+                                                              </font>
+                                                          </Label>
+                                                          <TextField editable="false" prefHeight="32.0" prefWidth="89.0" text="下注期数">
+                                                              <font>
+                                                                  <Font size="16.0" />
+                                                              </font>
+                                                          </TextField>
+                                                          <Label text="期可下分">
+                                                              <font>
+                                                                  <Font size="20.0" />
+                                                              </font>
+                                                          </Label>
+                                                      </children>
+                                                  </HBox>
+                                    <GridPane layoutX="164.0" layoutY="54.0" prefHeight="399.0" prefWidth="282.0" style="-fx-border-color: red;">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="充值金额 ：">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="下注期数 ：" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="流水倍率 ：" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="赠送比例 ：" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="充值金额" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="赠送比例" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="流水倍率" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="下注期数" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                    <Label layoutX="30.0" layoutY="24.0" text="首充福利赠送及下分设置：">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="480.0" layoutY="153.0" mnemonicParsing="false" prefWidth="114.0" text="添加一栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="480.0" layoutY="321.0" mnemonicParsing="false" text="删除选中栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="节日福利设置">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                              <AnchorPane prefHeight="890.0" prefWidth="1265.0">
+                                 <children>
+                                    <TableView layoutX="552.0" prefHeight="831.0" prefWidth="713.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="552.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn prefWidth="183.0" text="起始时间" />
+                                          <TableColumn prefWidth="180.0" text="截止时间" />
+                                          <TableColumn prefWidth="108.0" text="流水金额" />
+                                          <TableColumn prefWidth="100.0" text="下注期数" />
+                                          <TableColumn prefWidth="138.0" text="赠送金额" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER" layoutX="3.0" layoutY="836.0" prefHeight="49.0" prefWidth="1259.0" style="-fx-border-color: red;">
+                                       <children>
+                                          <Label text="注 ：">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefWidth="90.0" promptText="流水金额" text="起始时间">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="&lt;=&gt;">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefWidth="90.0" promptText="流水金额" text="截止时间">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="流水达到">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="流水金额">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="以上，且下注期数达到">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="下注期数">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="期以上送">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="赠送金额">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="分">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <GridPane layoutX="38.0" layoutY="101.0" prefHeight="399.0" prefWidth="359.0" style="-fx-border-color: red;">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="起始时间 ：">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="下注期数 ：" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="流水金额 ：" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="截止时间 ：" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="赠送金额 ：" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="流水金额" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="下注期数" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <DateTimePicker fx:id="startDateTimePicker" alignment="CENTER" prefHeight="72.0" prefWidth="140.0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </DateTimePicker>
+                                          <DateTimePicker fx:id="startDateTimePicker1" alignment="CENTER" prefHeight="72.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </DateTimePicker>
+                                          <TextField promptText="赠送金额" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                    <Label layoutX="14.0" layoutY="32.0" text="节日福利赠送及下分设置：">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="423.0" layoutY="161.0" mnemonicParsing="false" prefWidth="114.0" text="添加一栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="423.0" layoutY="369.0" mnemonicParsing="false" text="删除选中栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="192.0" layoutY="608.0" mnemonicParsing="false" text="确认送出">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="盈亏福利设置">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="886.0" prefWidth="1252.0">
+                                    <children>
+                              <AnchorPane prefHeight="890.0" prefWidth="1265.0">
+                                 <children>
+                                    <TableView layoutX="571.0" prefHeight="831.0" prefWidth="694.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="571.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn prefWidth="167.0" text="起始时间" />
+                                          <TableColumn prefWidth="156.0" text="截止时间" />
+                                          <TableColumn prefWidth="104.0" text="盈亏类型" />
+                                          <TableColumn prefWidth="98.0" text="设置金额" />
+                                          <TableColumn prefWidth="96.0" text="下注期数" />
+                                          <TableColumn prefWidth="72.0" text="赠送金额" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER" layoutX="62.0" layoutY="836.0" prefHeight="49.0" prefWidth="1141.0" style="-fx-border-color: red;">
+                                       <children>
+                                          <Label text="注 ：按">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefWidth="90.0" promptText="流水金额" text="盈亏类型">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="的">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefWidth="90.0" promptText="流水金额" text="起始时间">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="至">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefWidth="90.0" promptText="流水金额" text="截止时间">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="的金额达到">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="设置金额">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="以上，且下注期数达到">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="下注期数">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="期以上送">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="32.0" prefWidth="90.0" text="赠送金额">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="分">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <GridPane layoutX="38.0" layoutY="101.0" prefHeight="498.0" prefWidth="359.0" style="-fx-border-color: red;">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="起始时间 ：">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="下注期数 ：" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="设置金额 ：" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="盈亏类型 ：" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="截止时间 ：" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="赠送金额 ：" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <DateTimePicker fx:id="startDateTimePicker1" alignment="CENTER" prefHeight="72.0" prefWidth="140.0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </DateTimePicker>
+                                          <DateTimePicker fx:id="startDateTimePicker11" alignment="CENTER" prefHeight="72.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </DateTimePicker>
+                                          <TextField promptText="设置金额" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="下注期数" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField promptText="赠送金额" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <ComboBox prefHeight="33.0" prefWidth="163.0" promptText="盈亏类型" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="15.0" />
+                                             </GridPane.margin>
+                                          </ComboBox>
+                                       </children>
+                                    </GridPane>
+                                    <Label layoutX="14.0" layoutY="32.0" text="盈亏福利赠送及下分设置：">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="430.0" layoutY="164.0" mnemonicParsing="false" prefWidth="114.0" text="添加一栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="430.0" layoutY="369.0" mnemonicParsing="false" text="删除选中栏">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="191.0" layoutY="690.0" mnemonicParsing="false" text="确认送出">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -15,9 +15,9 @@
          <children>
             <TableView layoutY="14.0" prefHeight="270.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="95.0" text="期数" />
-                <TableColumn prefWidth="76.0" text="下注人数" />
-                  <TableColumn prefWidth="84.0" text="下注总金额" />
+                <TableColumn fx:id="periodColumn" prefWidth="95.0" text="期数" />
+                <TableColumn fx:id="playerNumberCloumn" prefWidth="76.0" text="下注人数" />
+                  <TableColumn fx:id="totalMoneyColimn" prefWidth="84.0" text="下注总金额" />
               </columns>
             </TableView>
          </children>
@@ -27,18 +27,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="118.0" layoutY="277.0" prefHeight="33.0" prefWidth="168.0">
+      <TextField fx:id="openCodeTextField" layoutX="118.0" layoutY="277.0" prefHeight="33.0" prefWidth="168.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <CheckBox layoutX="118.0" layoutY="330.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="168.0" text="开奖账单发送至群内">
+      <CheckBox fx:id="isBillSendCheckBox" layoutX="118.0" layoutY="330.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="168.0" text="开奖账单发送至群内">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <Button layoutX="118.0" layoutY="365.0" mnemonicParsing="false" text="选中项开奖" />
-      <Button layoutX="207.0" layoutY="365.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="选中项退款" />
-      <Button layoutX="118.0" layoutY="410.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="168.0" text="忽略官网卡奖封盘流程" />
+      <Button layoutX="118.0" layoutY="365.0" mnemonicParsing="false" onAction="#SelectOpenButtonActionEvent" text="选中项开奖" />
+      <Button layoutX="207.0" layoutY="365.0" mnemonicParsing="false" onAction="#SelectRefundButtonActionEvent" prefHeight="23.0" prefWidth="76.0" text="选中项退款" />
+      <Button layoutX="118.0" layoutY="410.0" mnemonicParsing="false" onAction="#ignoreOfficialActionEvent" prefHeight="33.0" prefWidth="168.0" text="忽略官网卡奖封盘流程" />
    </children>
 </AnchorPane>

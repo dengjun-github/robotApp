@@ -1,6 +1,9 @@
 package com.dj.handler;
 
 
+import api.future.Future;
+import api.future.OrderCheckFutureListener;
+import api.order.OrderCheck;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -12,6 +15,7 @@ import com.dj.net.HttpClient;
 import com.dj.robot.GroupRobot;
 import com.dj.util.*;
 import org.apache.commons.lang3.StringUtils;
+import serialize.pojo.Keys;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -19,10 +23,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.dj.entity.pojo.response.OpenData.NEW_OPEN_DATA;
-import static com.dj.net.VertxWebClient.RestFul.GET;
 import static com.dj.robot.GroupRobot.sendMessage;
 import static com.dj.util.GlobalConstant.*;
-import static com.dj.util.GlobalConstant.RequstUri.PLAYER_BETS_CHECK;
 
 public class GroupHandler {
 
@@ -75,45 +77,53 @@ public class GroupHandler {
 
 
     private void eventExecute() {
-        Thread.currentThread().setDaemon(true);
-        while (true) {
+        Thread thread = Thread.currentThread();
+        while (!thread.isInterrupted()) {
             if (EVENTS.size() != 0) {
                 //则不往下执行
                 //获取事件队列的中的元素
                 OpenEvent event = GroupHandler.EVENTS.poll();
-                if (event.getEventName().equals("SettingsStopBetsTime")) {
-                    betVerify("游戏封盘");
+                if (event.getEventName().equals(Keys.SETTINGS_STOP_BETS_TIME)) {
+                    betVerify();
                 }
-                if (event.getEventName().equals(AllKeys.DEFAULT_DOWN_30)) {
-                    GroupRobot.sendImg(imageVo::getDefaultDown30);
+                else if (event.getEventName().equals(Keys.SETTINGS_COUNTDOWN_IMAGE)) {
+                    GroupRobot.sendImg(() -> SettingUtils.IMAGE_SETTINGS_MAP.get(Keys.SETTINGS_COUNTDOWN_IMAGE));
                 }
+                else sendMessage(SettingUtils.getJsonByKey(event.getEventName()).get("msg").toString(),false);
                 //其他事件
-            }
-            try {
-                Thread.sleep(500l);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                Thread.interrupted();
             }
         }
     }
 
 
     //封盘事件
-    public void betVerify(String exMessage) {
+    public void betVerify() {
         CAN_BET = false;
         if (!IS_GAME_BEGIN) return;
-        GroupRobot.sendImg(() -> new File(IMAGE_PATH + AllKeys.STOP_BETS_TIME + ".png"));
-        GroupRobot.robotRequest2Server(GET, PLAYER_BETS_CHECK.getUri() + "/" + GAME_INDEX + "/" + NEW_OPEN_DATA.getNextexpect(), null,exMessage);
+        if (SettingUtils.getSettingsByKey(Keys.SETTINGS_STOP_BETS_IMAGE).getStatus()) {
+            GroupRobot.sendImg(() -> SettingUtils.IMAGE_SETTINGS_MAP.get(Keys.SETTINGS_STOP_BETS_IMAGE));
+        }
+
+        Future future = OrderCheck.deal(PLAYING_GAME.getIndex(), NEW_OPEN_DATA.getNextexpect());
+        future.addListener(new OrderCheckFutureListener() {
+            @Override
+            public void onSuccess(String s) {
+                sendMessage(s,false);
+            }
+
+            @Override
+            public void onFailure(int i) {
+                sendMessage("封盘异常:"+ErrorCodeUtil.getMsgByErroCode(i),false);
+            }
+        });
     }
 
     //开盘事件
     public void betOpen(String exMessage) {
-        GroupRobot.sendImg(() -> new File(IMAGE_PATH + AllKeys.START_BETS +".png"));
+        GroupRobot.sendImg(() ->  SettingUtils.IMAGE_SETTINGS_MAP.get(Keys.SETTINGS_STOP_BETS_IMAGE));
         sendMessage("当前期号为:" + NEW_OPEN_DATA.getNextexpect(), false);
         CAN_BET = true;
     }
-
 
     public Object getOpenData(boolean getOne) {
         Map<String, String> param = new HashMap<>();
@@ -127,7 +137,6 @@ public class GroupHandler {
             return openDatas;
         }
     }
-
 
     public static void main(String[] args) {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");

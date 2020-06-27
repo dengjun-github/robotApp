@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.RepulsionTabPageController">
+    <AnchorPane layoutX="769.0" layoutY="127.0" prefHeight="853.0" prefWidth="495.0">
+        <children>
+            <TabPane layoutX="89.0" layoutY="180.0" prefHeight="853.0" prefWidth="495.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="40.0" tabMinWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <tabs>
+                    <Tab text="手动发放推手福利">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #DCDCDC; -fx-border-style: solid;">
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="14.0" prefHeight="69.0" prefWidth="493.0">
+                                        <children>
+                                            <Label text="仅统计下注次数大于或等于">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                                <HBox.margin>
+                                                    <Insets left="30.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <TextField fx:id="manualCountTextFeild" onAction="#countTextFeildActionEvent" prefHeight="32.0" prefWidth="52.0" text="1">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </TextField>
+                                            <Label text="次的下线">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="-1.0" layoutY="90.0" prefHeight="60.0" prefWidth="495.0" spacing="60.0">
+                                        <children>
+                                            <RadioButton fx:id="betMoneyPaidRadioButton" mnemonicParsing="false" onAction="#betMoneyPaidRadioButtonActionEvent" text="按总下注金额发放福利">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                                <toggleGroup>
+                                                    <ToggleGroup fx:id="manualWelfare" />
+                                                </toggleGroup>
+                                            </RadioButton>
+                                            <RadioButton fx:id="totalLossPaidRadioButton" mnemonicParsing="false" onAction="#totalLossPaidRadioButtonActionEvent" text="按用户总亏损发放福利" toggleGroup="$manualWelfare">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </RadioButton>
+                                        </children>
+                                    </HBox>
+                                    <AnchorPane layoutX="5.0" layoutY="166.0" prefHeight="640.0" prefWidth="483.0">
+                                        <children>
+                                            <TableView fx:id="manualTableView" layoutX="224.0" prefHeight="640.0" prefWidth="264.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                                                <columns>
+                                                    <TableColumn fx:id="manualStartColumn" prefWidth="89.0" text="起始金额" />
+                                                    <TableColumn fx:id="manualEndColumn" prefWidth="82.0" text="结束金额" />
+                                                    <TableColumn fx:id="manualRatioColumn" prefWidth="91.0" text="发放比例(%)" />
+                                                </columns>
+                                            </TableView>
+                                            <Button layoutX="18.0" layoutY="305.0" mnemonicParsing="false" onAction="#confirmButtonActionEvent" prefHeight="69.0" prefWidth="188.0" text="确认发放">
+                                                <font>
+                                                    <Font size="20.0" />
+                                                </font>
+                                            </Button>
+                                            <Button alignment="CENTER" layoutX="26.0" layoutY="158.0" mnemonicParsing="false" onAction="#manualAddOneButtonActionEvent" prefHeight="54.0" prefWidth="172.0" text="+1栏" />
+                                            <GridPane layoutY="34.0" prefHeight="112.0" prefWidth="198.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="114.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="84.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="起始金额：">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="结束金额：" GridPane.rowIndex="1">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="发放比例：" GridPane.rowIndex="2">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <TextField fx:id="manualStartTextField" prefHeight="23.0" prefWidth="63.0" promptText="起始金额" GridPane.columnIndex="1" />
+                                                    <TextField fx:id="manualEndTextField" prefHeight="23.0" prefWidth="63.0" promptText="结束金额" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                    <TextField fx:id="manualRatioTextField" prefHeight="23.0" prefWidth="63.0" promptText="发放比例" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </AnchorPane>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="自动发放推手福利">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #DCDCDC; -fx-border-style: solid;">
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="494.0" spacing="15.0">
+                                        <children>
+                                            <CheckBox fx:id="autoWelfareCheckBox" mnemonicParsing="false" onAction="#autoWelfareCheckBoxActionEvent" text="开启自动发放福利">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                                <HBox.margin>
+                                                    <Insets left="30.0" />
+                                                </HBox.margin>
+                                            </CheckBox>
+                                            <RadioButton fx:id="lossRadioButton" mnemonicParsing="false" text="亏损">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                                <HBox.margin>
+                                                    <Insets left="60.0" />
+                                                </HBox.margin>
+                                                <toggleGroup>
+                                                    <ToggleGroup fx:id="autoWelfare" />
+                                                </toggleGroup>
+                                            </RadioButton>
+                                            <RadioButton fx:id="accountRadioButton" mnemonicParsing="false" text="流水" toggleGroup="$autoWelfare">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </RadioButton>
+                                        </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" layoutY="93.0" prefHeight="46.0" prefWidth="494.0">
+                                        <children>
+                                            <Label text="按照推手下线，每">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                                <HBox.margin>
+                                                    <Insets left="30.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <TextField fx:id="dayNumberTextFeild" alignment="CENTER_RIGHT" onAction="#dayNumberTextFeildActionEvent" prefHeight="32.0" prefWidth="49.0" text="30">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </TextField>
+                                            <Label text="天的流水来发放福利">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="44.0" prefHeight="49.0" prefWidth="494.0">
+                                        <children>
+                                            <Label text="仅统计下注次数大于或等于">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                                <HBox.margin>
+                                                    <Insets left="30.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <TextField fx:id="autoCountTextFeild" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="54.0" text="0">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </TextField>
+                                            <Label text="次的用户">
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </HBox>
+                                    <AnchorPane layoutX="7.0" layoutY="166.0" prefHeight="640.0" prefWidth="483.0">
+                                        <children>
+                                            <TableView fx:id="autoTableView" layoutX="226.0" prefHeight="640.0" prefWidth="262.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                                                <columns>
+                                                    <TableColumn fx:id="autoStartColumn" prefWidth="95.0" text="起始金额" />
+                                                    <TableColumn fx:id="autoEndColumn" prefWidth="87.0" text="结束金额" />
+                                                    <TableColumn fx:id="autoRatioColumn" prefWidth="79.0" text="发放比例(%)" />
+                                                </columns>
+                                            </TableView>
+                                            <Button alignment="CENTER" layoutX="26.0" layoutY="158.0" mnemonicParsing="false" onAction="#autoAddOneButtonActionEvent" prefHeight="54.0" prefWidth="172.0" text="+1栏" />
+                                            <GridPane layoutY="34.0" prefHeight="112.0" prefWidth="198.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="114.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="84.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="结束金额：">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="起始金额：" GridPane.rowIndex="1">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="发放比例：" GridPane.rowIndex="2">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <TextField fx:id="autoStartTextField" prefHeight="23.0" prefWidth="63.0" promptText="结束金额" GridPane.columnIndex="1" />
+                                                    <TextField fx:id="autoEndTextField" prefHeight="23.0" prefWidth="63.0" promptText="起始金额" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                    <TextField fx:id="autoRatioTextField" prefHeight="23.0" prefWidth="63.0" promptText="发放比例" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </AnchorPane>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </children>
+    </AnchorPane>
+    <AnchorPane layoutX="621.0" layoutY="40.0" prefHeight="47.0" prefWidth="643.0">
+        <children>
+            <HBox alignment="CENTER_LEFT" layoutX="-36.0" layoutY="14.0" prefHeight="47.0" prefWidth="674.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <Label text="推手人数：">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="30.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Label fx:id="repulsionNumberLabel" prefHeight="21.0" prefWidth="83.0" text="0">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="总下线人数：">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Label fx:id="allSubordinateNumberLabel" prefHeight="21.0" prefWidth="83.0" text="0">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label text="福利发放金额：">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Label fx:id="benefitsAmountLabel" prefHeight="21.0" prefWidth="74.0" text="0">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+        </children>
+    </AnchorPane>
+    <HBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="581.0">
+        <children>
+            <Label text="查询时间：">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <DatePicker fx:id="queryStartDatePicker" promptText="请选择开始日期" />
+            <Label text="&lt;=&gt;">
+                <font>
+                    <Font size="16.0" />
+                </font>
+                <HBox.margin>
+                    <Insets left="20.0" />
+                </HBox.margin>
+            </Label>
+            <DatePicker fx:id="queryEndDatePicker" promptText="请选择结束日期">
+                <HBox.margin>
+                    <Insets left="20.0" />
+                </HBox.margin>
+            </DatePicker>
+            <Button mnemonicParsing="false" onAction="#queryButtonActionEvent" text="查询">
+                <HBox.margin>
+                    <Insets left="40.0" />
+                </HBox.margin>
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Button>
+        </children>
+    </HBox>
+    <TableView fixedCellSize="0.0" layoutY="126.0" prefHeight="855.0" prefWidth="769.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn minWidth="20.0" prefWidth="75.0" text="C2" />
+        </columns>
+    </TableView>
+
+</AnchorPane>

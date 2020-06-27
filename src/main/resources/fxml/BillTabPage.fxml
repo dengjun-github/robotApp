@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="891.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.BillTabPageController">
+<AnchorPane fx:id="firstAn" prefHeight="891.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.BillTabPageController">
         <children>
             <Separator layoutY="219.0" prefHeight="35.0" prefWidth="1238.0" />
             <GridPane layoutY="5.0" prefHeight="149.0" prefWidth="478.0" style="-fx-border-color: #000000; -fx-border-style: dashed;">
@@ -66,17 +66,17 @@
             </GridPane>
             <VBox layoutX="498.0" layoutY="6.0" prefHeight="222.0" prefWidth="136.0">
                 <children>
-                    <CheckBox mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="下注语音提醒">
+                    <CheckBox fx:id="betVoiceCheckbox" mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="下注语音提醒">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </CheckBox>
-                    <CheckBox mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="封盘语音提醒">
+                    <CheckBox fx:id="closeVoiceCheckBox" mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="封盘语音提醒">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </CheckBox>
-                    <CheckBox mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="上下分语音提醒">
+                    <CheckBox fx:id="scoreVoiceCheckBox" mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" text="上下分语音提醒">
                         <font>
                             <Font size="15.0" />
                         </font>
@@ -88,19 +88,9 @@
                     </CheckBox>
                 </children>
             </VBox>
-            <Button fx:id="startButton" layoutX="874.0" layoutY="129.0" mnemonicParsing="false" onAction="#startButtonEvent" prefHeight="90.0" prefWidth="180.0" text="开始游戏" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="startButton" layoutX="1047.0" layoutY="99.0" mnemonicParsing="false" onAction="#startButtonEvent" prefHeight="121.0" prefWidth="180.0" text="开始游戏" textAlignment="CENTER" wrapText="true">
                 <font>
                     <Font size="30.0" />
-                </font>
-            </Button>
-            <Button fx:id="manualOperation" layoutX="1087.0" layoutY="103.0" mnemonicParsing="false" onAction="#manualOperationActionEvent" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: #FF3030;" text="手动封盘">
-                <font>
-                    <Font size="25.0" />
-                </font>
-            </Button>
-            <Button layoutX="1087.0" layoutY="174.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" text="校准时间">
-                <font>
-                    <Font size="25.0" />
                 </font>
             </Button>
             <TableView layoutY="260.0" prefHeight="514.0" prefWidth="1238.0" tableMenuButtonVisible="true">
@@ -164,7 +154,7 @@
                     </Label>
                 </children>
             </HBox>
-            <Label fx:id="closeBetLabel" layoutX="155.0" layoutY="159.0" text="开奖中..." textFill="RED">
+            <Label fx:id="closeBetLabel" layoutX="155.0" layoutY="159.0" text="开奖中..." textFill="RED" visible="false">
                 <font>
                     <Font size="66.0" />
                 </font>
@@ -215,16 +205,16 @@
                 <children>
                     <GridPane layoutX="53.0" layoutY="47.0" prefHeight="151.0" prefWidth="1009.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="75.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="72.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="80.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="122.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="81.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="85.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="84.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="88.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="157.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="153.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="81.0" />
                         </columnConstraints>
                         <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -234,52 +224,52 @@
                         <children>
                             <Label text="大小单双">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
                             <Label text="龙虎合" GridPane.columnIndex="1">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
                             <Label text="定位大小单双" GridPane.columnIndex="2">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
                             <Label text="单码" GridPane.columnIndex="3">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
                             <Label text="连码" GridPane.columnIndex="4">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
                             <Label text="定位数字" GridPane.columnIndex="5">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
-                            <Label text="大小单双" GridPane.columnIndex="6">
+                            <Label text="三区形态" GridPane.columnIndex="6">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
-                            <Label text="大小单双" GridPane.columnIndex="7">
+                            <Label prefHeight="20.0" prefWidth="154.0" text="大小单双龙虎两组合" GridPane.columnIndex="7">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
-                            <Label text="大小单双" GridPane.columnIndex="8">
+                            <Label prefHeight="20.0" text="大小单双龙虎三组合" GridPane.columnIndex="8">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
-                            <Label text="大小单双" GridPane.columnIndex="9">
+                            <Label text="定位龙虎合" GridPane.columnIndex="9">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="16.0" />
                                 </font>
                             </Label>
 
@@ -289,11 +279,11 @@
             </AnchorPane>
       <VBox layoutX="657.0" layoutY="13.0" prefHeight="209.0" prefWidth="180.0" spacing="10.0">
          <children>
-                  <Button mnemonicParsing="false" onAction="#scoreHistoryButtonActionEvent" prefHeight="65.0" prefWidth="180.0" text="上分详细历史">
-                      <font>
-                          <Font size="16.0" />
-                      </font>
-                  </Button>
+            <Button mnemonicParsing="false" onAction="#accountButtonActionEvent" prefHeight="65.0" prefWidth="180.0" text="续费/查看授权">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
                   <Button mnemonicParsing="false" onAction="#manualOpenButtonActionEvent" prefHeight="65.0" prefWidth="180.0" text="手动开奖或退款">
                       <font>
                           <Font size="16.0" />
@@ -338,6 +328,25 @@
                           <Font size="16.0" />
                       </font>
                   </MenuButton>
+         </children>
+      </VBox>
+      <VBox layoutX="854.0" layoutY="91.0" prefHeight="133.0" prefWidth="180.0" spacing="10.0">
+         <children>
+                  <Button fx:id="manualOperation" mnemonicParsing="false" onAction="#manualOperationActionEvent" prefHeight="45.0" prefWidth="180.0" text="手动封盘">
+                      <font>
+                          <Font size="20.0" />
+                      </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#clearZeroUserActionEvent" prefHeight="45.0" prefWidth="180.0" text="清空零分玩家">
+                      <font>
+                          <Font size="20.0" />
+                      </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#scoreHistoryButtonActionEvent" prefHeight="65.0" prefWidth="180.0" text="上分详细历史">
+                      <font>
+                          <Font size="20.0" />
+                      </font>
+                  </Button>
          </children>
       </VBox>
         </children>

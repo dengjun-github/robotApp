@@ -7,17 +7,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import serialize.pojo.BetsContent;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 import java.util.Set;
 
 public class GateWay {
 
     private static final Logger logger = LoggerFactory.getLogger(GateWay.class);
 
-    public Object gateWay(String className,String methodName, Map<String,Object> map) throws InvocationTargetException{
+    public Object gateWay(String className, String methodName, BetsContent content) throws InvocationTargetException{
         Object obj = new Object();
         Reflections reflections = new Reflections("com.dj.handler.openHandler");
         //获取带Service注解的类
@@ -42,7 +42,7 @@ public class GateWay {
                     if (null != annotation.path() && annotation.path().equals(methodName)) {
                         logger.info("Path = " + annotation.path());
                         try{
-                            obj = method.invoke(clazz.newInstance(), map);
+                            obj = method.invoke(clazz.newInstance(), content);
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
                         } catch (InstantiationException e) {

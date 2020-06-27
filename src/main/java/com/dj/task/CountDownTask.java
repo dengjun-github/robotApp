@@ -1,31 +1,38 @@
 package com.dj.task;
 
+import api.future.AllOrderFutureListener;
+import api.future.Future;
+import api.future.OrderResultFutureListener;
+import api.order.AllOrder;
+import api.order.OrderResult;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.dj.entity.pojo.request.order.ResultFinanceBo;
-import com.dj.entity.pojo.request.order.ResultOrderBo;
 import com.dj.entity.pojo.response.OpenData;
 import com.dj.entity.pojo.response.OpenEvent;
-import com.dj.entity.pojo.response.SettleResponse;
-import com.dj.handler.OrderHandler;
+import com.dj.handler.GroupHandler;
 import com.dj.net.HttpClient;
-import com.dj.util.DateUtil;
-import com.dj.util.HttpResult;
+import com.dj.util.*;
 import javafx.concurrent.Task;
+import org.apache.commons.lang3.StringUtils;
+import serialize.pojo.BetsContentOption;
+import serialize.pojo.Order;
+import serialize.pojo.OrderResultOption;
+import serialize.pojo.option.OrderResultItem;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import static com.dj.entity.pojo.response.OpenData.NEW_OPEN_DATA;
-import static com.dj.handler.GroupHandler.*;
+import static com.dj.handler.GroupHandler.RESULT_LIMT;
+import static com.dj.handler.GroupHandler.groupHandler;
 import static com.dj.robot.GroupRobot.sendMessage;
 import static com.dj.util.GlobalConstant.*;
-import static com.dj.util.GlobalConstant.RequstUri.PLAYER_RESULT;
 
 public class CountDownTask extends Task<OpenData> {
 
+    public static final GateWay way = new GateWay();
 
 
     @Override
@@ -47,87 +54,91 @@ public class CountDownTask extends Task<OpenData> {
             if (!NEW_OPEN_DATA.getExpect().equals(openData.getExpect())) {
                 //开奖
                 updateValue(openData);
-                Open();
+                OpenData.setNewCodeResultList(openData);
+                open();
 
             }
 
             //倒计时
             countDown = getcountDownNumber(openData);
             while (countDown > 0) {
-//                System.out.println("距离下次开奖时间还有:" + countDown + "s");
                 int finalCountDown = countDown;
-                if (IS_GAME_BEGIN){
-
-                    USER_ROOT.getSettings().stream()
-
-                            .filter(settings -> {
-                                Pattern pattern = Pattern.compile("[0-9]*");
-                                return pattern.matcher(settings.getValue()).matches();
-                            })
-                            .forEach(settings -> {
-                                if (settings.getStatus() && finalCountDown == Integer.parseInt(settings.getValue())) {
-                                    EVENTS.offer(new OpenEvent(settings.getKey(), Integer.parseInt(settings.getValue())));
-                                }
-                            });
-
-                    USER_ROOT.getImageSettings()
-                            .forEach(settings -> {
-                                if (settings.getStatus() && finalCountDown == settings.getValue()) {
-                                    EVENTS.offer(new OpenEvent(settings.getKey(), settings.getValue()));
-                                }
-                            });
+                if (IS_GAME_BEGIN) {
+                    SettingUtils.EVENT_MAP.forEach((sec, key) -> {
+                        if (sec.equals(finalCountDown)) GroupHandler.EVENTS.offer(OpenEvent.builder().countDown(sec).eventName(key).build());
+                    });
                 }
-                countDown --;
-                updateMessage(countDown+"");
+                countDown--;
+                updateMessage(countDown + "");
                 Thread.sleep(1000l);
             }
             Thread.sleep(1000l);
         }
     }
 
-
-
-
-    private void Open() {
+    public void open() {
         CAN_BET = false;
-        if(!IS_GAME_BEGIN) {
+        if (!IS_GAME_BEGIN) {
             CAN_BET = true;
             return;
         }
-        try {
-            List<ResultFinanceBo> resultFinanceBos = new OrderHandler().execute();
-            ResultOrderBo build = ResultOrderBo.builder()
-                    .finances(resultFinanceBos)
-                    .code(NEW_OPEN_DATA.getOpencode())
-                    .results(OpenData.getCodeResultList(NEW_OPEN_DATA))
-                    .prePeriod(NEW_OPEN_DATA.getExpect())
-                    .build();
+        Future future = AllOrder.deal(PLAYING_GAME.getIndex(), NEW_OPEN_DATA.getExpect());
+        future.addListener(new AllOrderFutureListener() {
+            @Override
+            public void onSuccess(List<Order> list) {
+                List<OrderResultItem> items = new ArrayList<>();
+                list.forEach(order -> {
+                    List<BetsContentOption> betsContentOptionList = new ArrayList<>();
+                    order.getContent().forEach(betsContent -> {
+                        try {
+                            BetsContentOption betsContentOption = (BetsContentOption) way.gateWay(PLAYING_GAME.getIndex(), betsContent.getBetsOrderKey(), betsContent);
+                            betsContentOptionList.add(betsContentOption);
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    OrderResultItem item = new OrderResultItem();
+                    item.setId(order.getId());
+                    item.setContent(betsContentOptionList);
+                    items.add(item);
+                });
 
-            HttpResult result = HttpClient.httpPost(PLAYER_RESULT.getUri() + "/" + GAME_INDEX + "/" + NEW_OPEN_DATA.getExpect(), (JSONObject) JSONObject.toJSON(build), USER_TOKEN);
-
-            if (null != result && result.isIsok()) {
-                JSONObject jsonObject = (JSONObject) result.getData();
-                SettleResponse settleResponse = jsonObject.toJavaObject(SettleResponse.class);
-                String msg = settleResponse.getMsg();
-                sendMessage(msg,true);
+                List<String> codeResultList = OpenData.newCodeResultList.subList(0,3);
 
 
+                OrderResultOption resultOption = OrderResultOption.builder()
+                        .gameType(PLAYING_GAME.getIndex())
+                        .items(items)
+                        .nums(OpenData.NEW_OPEN_DATA.getKaiJiangCode())
+                        .period(NEW_OPEN_DATA.getExpect())
+                        .result(StringUtils.join(codeResultList,"-"))
+                        .build();
+                OrderResult.deal(resultOption).addListener(new OrderResultFutureListener() {
+                    @Override
+                    public void onSuccess(Map<String, String> map) {
+                        map.forEach((k, v) -> sendMessage(v, true));
+                        //发送开奖图
+                        groupHandler.sendLiShiImage();
+                        //发送历史图
+                        groupHandler.sendKaiJiangImage();
+                        //开盘
+                        groupHandler.betOpen("开盘");
+                    }
 
+                    @Override
+                    public void onFailure(int i) {
+                        sendMessage("发送订单异常---------错误码:" + i + "-----错误信息" + ErrorCodeUtil.getMsgByErroCode(i), false);
+                        CAN_BET = true;
+                    }
+                });
+            }
 
-                //发送开奖图
-                groupHandler.sendLiShiImage();
-                //发送历史图
-                groupHandler.sendKaiJiangImage();
-
-                //开盘
-                groupHandler.betOpen("开盘");
-            } else {
-                sendMessage("连接服务器异常,请重试或联系管理员", false);
+            @Override
+            public void onFailure(int i) {
+                sendMessage("获取订单异常---------错误码:" + i + "-----错误信息" + ErrorCodeUtil.getMsgByErroCode(i), false);
                 CAN_BET = true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     public Object getOpenData(boolean getOne) {
@@ -142,13 +153,12 @@ public class CountDownTask extends Task<OpenData> {
             return openDatas;
         }
     }
-    public int getcountDownNumber(OpenData openData){
+
+    public int getcountDownNumber(OpenData openData) {
         long nexttime = DateUtil.dateToStamp(openData.getNexttime());
         long time = (nexttime - System.currentTimeMillis()) / 1000l;
         //倒计时
         return (int) time;
     }
-
-
 
 }

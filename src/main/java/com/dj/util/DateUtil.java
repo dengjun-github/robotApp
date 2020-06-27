@@ -32,6 +32,10 @@ public class DateUtil {
         return toHm(d);
     }
 
+    public static String toYmdhms(Date date) {
+        return yMdHms.format(date);
+    }
+
     public static void main(String[] args) throws ParseException {
         String dateStr = "2020-12-12 23:59:59";
         System.out.println(toHm(dateStr));

@@ -3,7 +3,6 @@ package com.dj.util;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.dj.entity.pojo.response.Root;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,10 +29,5 @@ public class JsonUtil {
         }
     }
 
-    public static void main(String[] args) {
-        String json = "{\"userId\": 1263367239957032960, \"account\": \"dj123\", \"instructs\": [{\"key\": \"UpperScore\", \"title\": \"上分\", \"value\": \"上\", \"status\": true}, {\"key\": \"lowerScore\", \"title\": \"下分\", \"value\": \"下\", \"status\": true}], \"returnTemplates\": [{\"key\": \"UpperOrLowerScoreSuccess\", \"title\": \"上下分成功\", \"value\": \"{昵称}{上下分}:[{分数}]成功!\", \"status\": true}, {\"key\": \"BalanceNotEnough\", \"title\": \"余额不足\", \"value\": \"余额不足\", \"status\": true}]}";
-        Root root = string2Obj(json,Root.class);
-        System.out.println(root.toString());
-    }
 }
 

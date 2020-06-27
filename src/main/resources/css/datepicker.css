@@ -1,0 +1,75 @@
+.root{
+    /*主体颜色设置*/
+    -fx-accent: #5b8cff;
+    -fx-focus-color: #5b8cff;
+}
+
+.label{
+    -fx-font-size: 1.2em;
+    -fx-text-fill: gray;
+}
+.button{
+    -fx-cursor: hand;
+    -fx-border-radius: 0;
+}
+/*#layoutMain{
+    -fx-background-color:transparent;
+}*/
+#layout{
+    -fx-background-color: white;
+    -fx-border-radius: 4;
+    -fx-effect: dropshadow(two-pass-box,rgba(160,180,220,0.85), 15,0, 0, 0);
+}
+#confirmBtn{
+    -fx-text-fill: #5b8cff;
+    -fx-min-width: 175;
+    -fx-min-height:39;
+    -fx-background-color: white;
+}
+#cancelBtn{
+    -fx-text-fill: #CDD0D1;
+    -fx-min-width: 175;
+    -fx-min-height:39;
+    -fx-background-color: white;
+    -fx-border-style:  hidden solid hidden hidden;
+    -fx-border-color:#EBEBEB;
+}
+#confirmBtn:hover,#cancelBtn:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #5b8cff;
+}
+/*combo-box样式*/
+.combo-box{
+    -fx-background-color: #F4F4F4;
+    -fx-text-fill: #CDD0D1;
+    -fx-border-color: #4877e7;
+    -fx-border-style: hidden ;
+}
+.combo-box > .text-field{
+    -fx-background-color:transparent;
+    -fx-border-color: transparent;
+}
+.combo-box > .text-field:focused{
+    -fx-background-color:transparent;
+    -fx-border-color: transparent;
+}
+.combo-box-base > .arrow-button {
+    -fx-background-color: transparent;
+}
+.combo-box-base > .arrow-button > .arrow{
+    -fx-background-color:#4877e7;
+}
+#weekBox .label{
+    -fx-text-fill: #9E9E9E;
+}
+#datePick .button{
+    -fx-font-size: 0.83em;
+    -fx-pref-width: 35;
+    -fx-pref-height: 35;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-background-color: transparent;
+}
+#yearMonthBox .label{
+    -fx-text-fill: black;
+}

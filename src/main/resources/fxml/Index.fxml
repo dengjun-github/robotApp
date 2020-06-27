@@ -1,36 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane prefHeight="1032.0" prefWidth="1257.0" xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.IndexController">
     <children>
         <TabPane layoutX="74.0" layoutY="54.0" prefHeight="982.0" prefWidth="1326.0" tabClosingPolicy="UNAVAILABLE"
                  tabMaxHeight="50.0" tabMaxWidth="138.0" tabMinHeight="50.0" tabMinWidth="126.0"
                  AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                 AnchorPane.topAnchor="0.0">
+                 AnchorPane.topAnchor="0.0" fx:id="indexTabPane">
+
             <tabs>
                 <Tab text="账单信息" fx:id="billTab">
                     <fx:include fx:id="billTabPage" source="BillTabPage.fxml"/>
@@ -41,6 +22,11 @@
                 <Tab text="反水管理" fx:id="backTab">
                     <fx:include fx:id="backTabPage" source="BackTabPage.fxml"/>
                 </Tab>
+                <!--<Tab text="推手管理" fx:id="repulsionTab">
+                    <content>
+                        <fx:include fx:id="repulsionTabPage" source="RepulsionTabPage.fxml"/>
+                    </content>
+                </Tab>-->
                 <Tab text="流水管理" fx:id="statementTab">
                     <fx:include fx:id="statementTabPage" source="StatementTabPage.fxml"/>
                 </Tab>

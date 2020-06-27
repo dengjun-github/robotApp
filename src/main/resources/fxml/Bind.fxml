@@ -1,64 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.BindController">
-    <children>
-        <VBox prefHeight="393.0" prefWidth="600.0">
-            <children>
-                <HBox prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button fx:id="returnButton" mnemonicParsing="false" onAction="#retrunEvent" prefHeight="40.0" prefWidth="80.0" text="返回">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Button>
-                        <Label fx:id="systemLabel" alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="325.0" style="-fx-label-padding: 20;" text="绑定卡密">
-                            <font>
-                                <Font name="System Bold" size="40.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label fx:id="userNameLabel" text="用户名：">
-                            <font>
-                                <Font size="20.0" />
-                            </font></Label>
-                        <TextField fx:id="account" promptText="填写您的账号" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label fx:id="securitykeyLabel" text="卡   密：">
-                            <font>
-                                <Font size="20.0" />
-                            </font></Label>
-                  <TextField fx:id="security_key" promptText="填写您的卡密" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                    <children>
-                  <Button fx:id="bindButton" mnemonicParsing="false" onAction="#bindEvent" prefHeight="40.0" prefWidth="80.0" text="绑定">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bindCardButton" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="80.0" text="重置">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-    </children>
+<AnchorPane prefHeight="358.0" prefWidth="450.0" style="-fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dj.controller.BindController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="450.0" style="-fx-background-color: #00BFFF;">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/title.png" />
+               </image>
+            </ImageView>
+            <Label text="充值绑卡" textFill="SNOW">
+               <font>
+                  <Font name="Serif Regular" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#returnButtonActionEvent" style="-fx-background-color: #00BFFF;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="返回登录" />
+               </tooltip>
+               <HBox.margin>
+                  <Insets left="221.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimizeButtonActionEvent" style="-fx-background-color: #00BFFF;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/minimize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <tooltip>
+                  <Tooltip text="最小化" />
+               </tooltip>
+            </Button>
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonActionEvent" style="-fx-background-color: #00BFFF;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="关闭" />
+               </tooltip>
+            </Button>
+         </children>
+      </HBox>
+      <GridPane layoutX="58.0" layoutY="93.0" prefHeight="172.0" prefWidth="311.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="55.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="256.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="账号 ：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="accountTextField" promptText="输入您的账号" style="-fx-background-color: #F8F8FF; -fx-border-color: #00BFFF;" GridPane.columnIndex="1" />
+            <Label text="卡密 ：" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cardTextField" promptText="输入您的卡密" style="-fx-background-color: #F8F8FF; -fx-border-color: #00BFFF;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button defaultButton="true" layoutX="58.0" layoutY="304.0" mnemonicParsing="false" onAction="#bindEvent" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #00BFFF;" text="立即绑定" textFill="SNOW">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
